@@ -12,14 +12,23 @@ import MenuButton from "../components/MenuButton";
 import InviteModal from "../components/Modal/InviteModal";
 import { Color } from "../common/colors";
 import { T18 } from "../components/Typography";
+import { useNavigation } from "@react-navigation/native";
+import { RootStackParamList } from "../../App";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+
+type Navigation = NativeStackNavigationProp<RootStackParamList>;
 
 export default function Home() {
   const [isModal, setIsModal] = useState(false);
+  const navigation = useNavigation<Navigation>();
+
+  const goToFeed = () => navigation.navigate("Feed");
+
   return (
     <SafeAreaView edges={["top"]} style={styles.safeContainer}>
       <View style={styles.headerContainer}>
         {/* 헤더 */}
-        <Header />
+        <Header isBack={false} />
         <View style={styles.profileContainer}>
           <View style={{ alignItems: "center", flexDirection: "row" }}>
             <Profile image={"one"} />
@@ -34,9 +43,9 @@ export default function Home() {
       <View style={styles.homeContainer}>
         {/* 메뉴들 */}
         <View style={styles.tabContainer}>
-          <MenuButton name="스토리" icon="story" />
-          <MenuButton name="사진첩" icon="album" />
-          <MenuButton name="캘린더" icon="promise" />
+          <MenuButton name="스토리" icon="story" onPress={goToFeed} />
+          <MenuButton name="사진첩" icon="album" onPress={goToFeed} />
+          <MenuButton name="캘린더" icon="promise" onPress={goToFeed} />
         </View>
       </View>
 

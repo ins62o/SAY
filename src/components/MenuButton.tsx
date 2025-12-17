@@ -16,11 +16,15 @@ const iconMap = {
 type MenuType = {
   name: string;
   icon: keyof typeof iconMap;
+  onPress: () => void;
 };
 
-export default function MenuButton({ name, icon }: MenuType) {
+export default function MenuButton({ name, icon, onPress }: MenuType) {
   return (
-    <TouchableOpacity style={[styles.tabButton, CommonStyles.shadow]}>
+    <TouchableOpacity
+      style={[styles.tabButton, CommonStyles.shadow]}
+      onPress={onPress}
+    >
       <View style={styles.iconBox}>
         <Image
           source={iconMap[icon as keyof typeof iconMap]}
