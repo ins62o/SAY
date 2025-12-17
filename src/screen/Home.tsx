@@ -1,23 +1,76 @@
 /* React & React Native */
-import React from "react";
-import { View, Text } from "react-native";
+import React, { useState } from "react";
+import { View, StyleSheet } from "react-native";
 
 /* Library */
 import { SafeAreaView } from "react-native-safe-area-context";
 
-/* Styles */
-import { CommonStyles } from "../common/container";
-
 /* Components */
 import Header from "../components/Header";
+import Profile from "../components/Profile";
+import MenuButton from "../components/MenuButton";
+import InviteModal from "../components/Modal/InviteModal";
+import { Color } from "../common/colors";
+import { T18 } from "../components/Typography";
 
 export default function Home() {
+  const [isModal, setIsModal] = useState(false);
   return (
-    <SafeAreaView style={CommonStyles.container}>
-      <Header />
-      <View style={CommonStyles.FJA}>
-        <Text>Home</Text>
+    <SafeAreaView edges={["top"]} style={styles.safeContainer}>
+      <View style={styles.headerContainer}>
+        {/* 헤더 */}
+        <Header />
+        <View style={styles.profileContainer}>
+          <View style={{ alignItems: "center", flexDirection: "row" }}>
+            <Profile image={"one"} />
+            <T18 style={{ marginLeft: 10 }}>정인성</T18>
+          </View>
+          <View>
+            <Profile image={"invite"} onPress={() => setIsModal(true)} />
+          </View>
+        </View>
       </View>
+
+      <View style={styles.homeContainer}>
+        {/* 메뉴들 */}
+        <View style={styles.tabContainer}>
+          <MenuButton name="스토리" icon="story" />
+          <MenuButton name="사진첩" icon="album" />
+          <MenuButton name="캘린더" icon="promise" />
+        </View>
+      </View>
+
+      <InviteModal visible={isModal} onClose={() => setIsModal(false)} />
     </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  safeContainer: { flex: 1, backgroundColor: Color.Main200 },
+
+  headerContainer: {
+    height: 156,
+    backgroundColor: Color.Main200,
+  },
+
+  profileContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingHorizontal: 15,
+  },
+
+  homeContainer: {
+    flex: 1,
+    backgroundColor: Color.Main100,
+    borderTopLeftRadius: 50,
+    borderTopRightRadius: 50,
+  },
+
+  tabContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    position: "relative",
+    bottom: 35,
+    padding: 15,
+  },
+});
