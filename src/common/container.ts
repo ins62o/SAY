@@ -15,4 +15,12 @@ export const CommonStyles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+
+  shadow: {
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 0.1,
+    shadowRadius: 20,
+    elevation: 10,
+  },
 });

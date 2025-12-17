@@ -13,7 +13,7 @@ export default function Header() {
   );
 }
 
-export const styles = StyleSheet.create({
+const styles = StyleSheet.create({
   HeaderContainer: {
     height: 52,
     justifyContent: "center",

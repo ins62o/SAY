@@ -35,6 +35,9 @@ export default function BottomTabNavigator() {
           tabBarActiveTintColor: Color.Main500,
           tabBarInactiveTintColor: "#aaa",
           headerShown: false,
+          tabBarLabelStyle: {
+            fontFamily: "memo",
+          },
         })}
       >
         <BottomTab.Screen
