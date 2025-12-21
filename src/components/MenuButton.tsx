@@ -1,6 +1,6 @@
 /* React & React Native */
-import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 import React from "react";
+import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 
 /* Styles */
 import { CommonStyles } from "../common/container";
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     backgroundColor: Color.Main300,
     alignItems: "center",
     flexDirection: "row",
-    borderRadius: 7,
+    borderRadius: 10,
     padding: 5,
   },
 

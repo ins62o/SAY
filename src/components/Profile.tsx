@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     height: 50,
     borderWidth: 1,
     borderColor: Color.Main400,
-    borderRadius: 25,
+    borderRadius: 50 / 2,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: Color.Main100,
@@ -44,6 +44,5 @@ const styles = StyleSheet.create({
   ProfileImage: {
     width: 48,
     height: 48,
-    borderRadius: 24,
   },
 });

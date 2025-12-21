@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: Color.Main400,
-    borderRadius: 24,
+    borderRadius: 10,
   },
 
   innerWrapper: {
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     height: 220,
     alignItems: "center",
     backgroundColor: Color.Main200,
-    borderRadius: 24,
+    borderRadius: 10,
   },
 
   inviteContainer: {
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderWidth: 1,
     borderColor: Color.Main400,
-    borderRadius: 12,
+    borderRadius: 10,
     backgroundColor: Color.Main100,
   },
 });
