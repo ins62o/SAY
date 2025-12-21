@@ -7,4 +7,6 @@ export const Color = {
   Main500: "#FF9F1C",
 
   // 폰트 컬러
+  colorGray: "#9CA3AF",
+  colorBlack: "#3A2A1A",
 };
