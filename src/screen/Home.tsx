@@ -3,7 +3,9 @@ import React, { useState } from "react";
 import { View, StyleSheet } from "react-native";
 
 /* Library */
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useNavigation } from "@react-navigation/native";
 
 /* Components */
 import Header from "../components/Header";
@@ -12,9 +14,7 @@ import MenuButton from "../components/MenuButton";
 import InviteModal from "../components/Modal/InviteModal";
 import { Color } from "../common/colors";
 import { T18 } from "../components/Typography";
-import { useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "../../App";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 type Navigation = NativeStackNavigationProp<RootStackParamList>;
 
@@ -23,6 +23,7 @@ export default function Home() {
   const navigation = useNavigation<Navigation>();
 
   const goToFeed = () => navigation.navigate("Feed");
+  const goToCalendar = () => navigation.navigate("Calendar");
 
   return (
     <SafeAreaView edges={["top"]} style={styles.safeContainer}>
@@ -45,7 +46,7 @@ export default function Home() {
         <View style={styles.tabContainer}>
           <MenuButton name="스토리" icon="story" onPress={goToFeed} />
           <MenuButton name="사진첩" icon="album" onPress={goToFeed} />
-          <MenuButton name="캘린더" icon="promise" onPress={goToFeed} />
+          <MenuButton name="캘린더" icon="promise" onPress={goToCalendar} />
         </View>
       </View>
 
