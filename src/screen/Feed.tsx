@@ -3,9 +3,11 @@ import { View, StyleSheet, Animated } from "react-native";
 import React, { useRef, useState } from "react";
 
 /* Library */
-import { SafeAreaView } from "react-native-safe-area-context";
-import Header from "../components/Header";
 import TypeWriter from "react-native-typewriter";
+import { SafeAreaView } from "react-native-safe-area-context";
+
+/* Components */
+import Header from "../components/Header";
 import { Color } from "../common/colors";
 import { T18 } from "../components/Typography";
 
@@ -30,12 +32,18 @@ export default function Feed() {
 
       {/* 피드 메인 */}
       <View style={styles.feedContainer}>
-        {!isTyping && (
+        {!isTyping ? (
           <Animated.View style={{ opacity }}>
-            <TypeWriter typing={1} onTypingEnd={fadeOut}>
-              <T18>오늘 기억해두고 싶은 순간이 있나요?</T18>
+            <TypeWriter
+              typing={1}
+              onTypingEnd={fadeOut}
+              style={{ paddingTop: 15 }}
+            >
+              <T18>기억해두고 싶은 순간이 있나요?</T18>
             </TypeWriter>
           </Animated.View>
+        ) : (
+          <View style={styles.cardContainer}></View>
         )}
       </View>
     </SafeAreaView>
@@ -52,6 +60,11 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
     flex: 1,
-    paddingTop: 15,
+  },
+
+  cardContainer: {
+    flex: 1,
+    width: "100%",
+    margin: 15,
   },
 });
