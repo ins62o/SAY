@@ -3,19 +3,24 @@ import React from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
 
 /* Components */
-import { T18 } from "./Typography";
+import { T16, T18, T20, TB16 } from "./Typography";
 
 /* Styles */
-import { Color } from "../common/colors";
+import { color } from "../common/colors";
+import { CommonStyles } from "../common/container";
 
 type ButtonType = {
   text: string;
+  style?: any;
+  size?: number;
 };
 
-export default function Button({ text }: ButtonType) {
+export default function Button({ text, style, size }: ButtonType) {
   return (
-    <TouchableOpacity style={styles.btn}>
-      <T18 style={{ color: Color.colorBlack }}>{text}</T18>
+    <TouchableOpacity style={[styles.btn, style]}>
+      {size === 16 && <T16>{text}</T16>}
+      {size === 18 && <T18>{text}</T18>}
+      {size === 20 && <T20>{text}</T20>}
     </TouchableOpacity>
   );
 }
@@ -23,10 +28,13 @@ export default function Button({ text }: ButtonType) {
 const styles = StyleSheet.create({
   btn: {
     height: 48,
-    width: "90%",
-    backgroundColor: Color.Main300,
+    padding: 10,
+    borderWidth: 1,
+    borderColor: color.main,
     borderRadius: 10,
+    backgroundColor: color.main,
     justifyContent: "center",
     alignItems: "center",
+    ...CommonStyles.shadow,
   },
 });

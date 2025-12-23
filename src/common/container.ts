@@ -2,12 +2,12 @@
 import { StyleSheet } from "react-native";
 
 /* Styles */
-import { Color } from "./colors";
+import { color } from "./colors";
 
 export const CommonStyles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Color.Main100,
+    backgroundColor: color.back,
   },
 
   FJA: {

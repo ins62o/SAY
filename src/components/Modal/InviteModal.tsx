@@ -1,19 +1,14 @@
 /* React & React Native */
 import React from "react";
-import {
-  Modal,
-  StyleSheet,
-  View,
-  Pressable,
-  TouchableOpacity,
-} from "react-native";
+import { Modal, StyleSheet, View, Pressable } from "react-native";
 
 /* Styles */
-import { Color } from "../../common/colors";
+import { color } from "../../common/colors";
 import { T16, T20 } from "../Typography";
 
 /* Components */
 import Profile from "../Profile";
+import Button from "../Button";
 
 type EnvelopeModalProps = {
   visible: boolean;
@@ -47,11 +42,7 @@ export default function InviteModal({ visible, onClose }: EnvelopeModalProps) {
               <T16>1명의 구성원을 더 초대할 수 있어요 !</T16>
             </View>
 
-            <View>
-              <TouchableOpacity style={styles.inviteBtn}>
-                <T16>초대 링크 보내기</T16>
-              </TouchableOpacity>
-            </View>
+            <Button text="초대 링크 보내기" style={{ height: 42 }} size={16} />
           </View>
         </View>
       </View>
@@ -76,7 +67,7 @@ const styles = StyleSheet.create({
     height: 250,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: Color.Main400,
+    backgroundColor: color.sub,
     borderRadius: 10,
   },
 
@@ -85,7 +76,8 @@ const styles = StyleSheet.create({
     width: 270,
     height: 220,
     alignItems: "center",
-    backgroundColor: Color.Main200,
+    justifyContent: "center",
+    backgroundColor: color.sub2,
     borderRadius: 10,
   },
 
@@ -104,11 +96,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 
-  inviteBtn: {
-    padding: 10,
-    borderWidth: 1,
-    borderColor: Color.Main400,
-    borderRadius: 10,
-    backgroundColor: Color.Main100,
-  },
+  inviteBtn: {},
 });

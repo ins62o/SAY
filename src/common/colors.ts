@@ -1,12 +1,14 @@
-export const Color = {
-  // 메인 색상들
-  Main100: "#FFFBF0",
-  Main200: "#FFFAC8",
-  Main300: "#FFD3AA",
-  Main400: "#FFB69C",
-  Main500: "#FF9F1C",
-
-  // 폰트 컬러
-  colorGray: "#9CA3AF",
-  colorBlack: "#3A2A1A",
+export const color = {
+  main: "#ffd653",
+  main2: "#ff8f00",
+  sub: "#FFB69C",
+  sub2: "#FFFAC8",
+  sub3: "#FFD3AA",
+  black: "#231F20",
+  back: "#FFFBF0",
+  blue: "#006AD5",
+  red: "#FE574B",
+  gray: "#929292",
+  gray2: "#aaaaaa",
+  white: "#f9f9f9",
 };

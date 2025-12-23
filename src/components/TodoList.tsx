@@ -1,9 +1,7 @@
 /* React & React Native  */
 import React from "react";
 import { View, TouchableOpacity, Image, StyleSheet } from "react-native";
-
-/* Components */
-import { TB18 } from "./Typography";
+import { T18 } from "./Typography";
 
 type TodoType = {
   todo: string;
@@ -24,8 +22,7 @@ export default function TodoList({ todo, isCheck }: TodoType) {
           style={styles.icon}
         />
       </View>
-
-      <TB18>{todo}</TB18>
+      <T18>{todo}</T18>
     </TouchableOpacity>
   );
 }

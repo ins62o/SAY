@@ -8,7 +8,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 /* Components */
 import Header from "../components/Header";
-import { Color } from "../common/colors";
+import { color } from "../common/colors";
 import { T18 } from "../components/Typography";
 
 export default function Feed() {
@@ -39,7 +39,7 @@ export default function Feed() {
               onTypingEnd={fadeOut}
               style={{ paddingTop: 15 }}
             >
-              <T18>기억해두고 싶은 순간이 있나요?</T18>
+              <T18>기억해두고 싶은 순간이 있나요 ?</T18>
             </TypeWriter>
           </Animated.View>
         ) : (
@@ -53,7 +53,7 @@ export default function Feed() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Color.Main200,
+    backgroundColor: color.back,
   },
 
   feedContainer: {
