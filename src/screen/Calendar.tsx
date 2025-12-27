@@ -1,112 +1,122 @@
 /* React & React Native */
-import {
-  View,
-  StyleSheet,
-  ScrollView,
-  Dimensions,
-  TouchableOpacity,
-} from "react-native";
-import React from "react";
-
-/* Components */
-import TodoList from "../components/TodoList";
-import Header from "../components/Header";
-import Button from "../components/Button";
-import { T18, T20, TB20 } from "../components/Typography";
-
-/* Styles */
-import { color } from "../common/colors";
+import React, { useState } from "react";
+import { View, StyleSheet } from "react-native";
 
 /* Library */
 import { SafeAreaView } from "react-native-safe-area-context";
-import Ionicons from "@expo/vector-icons/Ionicons";
-import dayjs from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
+
+/* Components */
+import Header from "../components/Header";
+import Button from "../components/Button";
+import CalendarModal from "../components/Modal/CalendarModal";
+import WeeklyCalendar from "../components/WeeklyCalendar";
+import Schedule from "../components/Schedule";
+import CreateSchedule from "../components/CreateSchedule";
+import ChoiceCharacterModal from "../components/Modal/ChoiceCharacterModal";
+
+/* Styles */
+import { COLORS } from "../common/colors";
 
 export default function Calendar() {
-  const today = dayjs();
+  /** ===== 모달 상태 ===== */
+  const [isModal, setIsModal] = useState(false);
+  const [isCharacterList, setIsCharacterList] = useState(false);
 
-  const WEEK_LABELS = ["월", "화", "수", "목", "금", "토", "일"];
+  /** ===== 화면 상태 ===== */
+  const [isCreated, setIsCreated] = useState(false);
 
-  /** ===== 이번 주 월요일 구하기 ===== */
-  const dayOfWeek = today.day(); // 0(일) ~ 6(토)
-  const mondayOffset = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
-  const monday = today.add(mondayOffset, "day");
+  /** ===== 날짜 상태 (주간 캘린더 + 메인 캘린더용)  ===== */
+  const [selectedDate, setSelectedDate] = useState<Dayjs>(dayjs());
 
-  /** ===== 월 ~ 일 (7일) 생성 ===== */
-  const weekDays = Array.from({ length: 7 }).map((_, i) =>
-    monday.add(i, "day")
-  );
+  // 일정 생성 전용
+  const [createSelectedDate, setCreateSelectedDate] = useState<Dayjs>(dayjs());
 
   return (
     <SafeAreaView style={styles.container} edges={["top"]}>
-      <Header isBack={true} />
-      {/* 캘린더 박스 */}
-      <View style={styles.calendarBox}>
-        <View style={styles.todayTitle}>
-          <TB20 style={{ color: color.main2 }}>
-            오늘, {today.format("YYYY년 MM월 DD일")}
-          </TB20>
-        </View>
+      <Header isBack />
 
-        <View style={styles.calendar}>
-          {weekDays.map((day, index) => {
-            const isToday = day.isSame(today, "day");
-            const isSaturday = index === 5;
-            const isSunday = index === 6;
+      {/* ===== 주간 캘린더 ===== */}
+      {!isCreated && (
+        <WeeklyCalendar
+          selectedDate={selectedDate}
+          onSelectDate={setSelectedDate}
+          onPressCalendar={() => setIsModal(true)}
+        />
+      )}
 
-            return (
-              <View key={day.format("YYYY-MM-DD")} style={styles.dayBox}>
-                <TouchableOpacity
-                  style={[styles.day, isToday && styles.todayDay]}
-                >
-                  {/* 요일 */}
-                  <T18
-                    style={[
-                      styles.weekText,
-                      isSaturday && styles.saturday,
-                      isSunday && styles.sunday,
-                    ]}
-                  >
-                    {WEEK_LABELS[index]}
-                  </T18>
+      {/* ===== 메인 콘텐츠 ===== */}
+      <View style={styles.content}>
+        {!isCreated ? (
+          <Schedule />
+        ) : (
+          <CreateSchedule
+            onPressCalendar={() => setIsModal(true)}
+            onPressCharacter={() => setIsCharacterList(true)}
+            selectedDate={createSelectedDate}
+            onSelectDate={setCreateSelectedDate}
+          />
+        )}
 
-                  {/* 날짜 */}
-                  <T18
-                    style={[
-                      styles.dateText,
-                      isSaturday && styles.saturday,
-                      isSunday && styles.sunday,
-                      isToday && styles.todayDate,
-                    ]}
-                  >
-                    {day.format("DD")}
-                  </T18>
-                </TouchableOpacity>
-              </View>
-            );
-          })}
-        </View>
-      </View>
-
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: color.sub2,
-          justifyContent: "flex-end",
-        }}
-      >
-        <View
-          style={{
-            width: "100%",
-            height: 100,
-            backgroundColor: color.back,
-          }}
-        >
-          <View style={{ padding: 15 }}>
-            <Button text="신규 할일 생성" size={18} />
+        {/* ===== 하단 버튼 ===== */}
+        {!isCreated ? (
+          <View style={styles.bottomBar}>
+            <View style={styles.bottomInner}>
+              <Button
+                text="새로운 할일 생성"
+                size={18}
+                onPress={() => {
+                  // 생성 시작 시 주간 날짜를 복사
+                  setCreateSelectedDate(selectedDate);
+                  setIsCreated(true);
+                }}
+              />
+            </View>
           </View>
-        </View>
+        ) : (
+          <View style={styles.twoBtnbottomBar}>
+            <View style={styles.bottomInner}>
+              <Button
+                text="등록"
+                size={18}
+                onPress={() => setIsCreated(false)}
+              />
+              <View style={{ marginBottom: 10 }} />
+              <Button
+                text="취소"
+                size={18}
+                onPress={() => setIsCreated(false)}
+                style={styles.cancelBtn}
+              />
+            </View>
+          </View>
+        )}
       </View>
+
+      {/* ===== 월간 캘린더 모달 ===== */}
+      {isModal && (
+        <CalendarModal
+          visible={isModal}
+          onClose={() => setIsModal(false)}
+          selectedDate={isCreated ? createSelectedDate : selectedDate}
+          onSelectDate={(date: Dayjs) => {
+            if (isCreated) {
+              setCreateSelectedDate(date);
+            } else {
+              setSelectedDate(date);
+            }
+            setIsModal(false);
+          }}
+        />
+      )}
+
+      {/* ===== 캐릭터 선택 모달 ===== */}
+      {isCharacterList && (
+        <ChoiceCharacterModal
+          visible={isCharacterList}
+          onClose={() => setIsCharacterList(false)}
+        />
+      )}
     </SafeAreaView>
   );
 }
@@ -114,61 +124,33 @@ export default function Calendar() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: color.back,
+    backgroundColor: COLORS.background,
   },
 
-  calendarBox: {
+  content: {
+    flex: 1,
+    backgroundColor: COLORS.surfaceSoft,
+    justifyContent: "space-between",
+  },
+
+  bottomBar: {
+    width: "100%",
+    height: 100,
+    backgroundColor: COLORS.background,
+  },
+
+  twoBtnbottomBar: {
+    width: "100%",
     height: 150,
-    justifyContent: "center",
+    backgroundColor: COLORS.background,
   },
 
-  todayTitle: {
-    marginBottom: 10,
-    paddingHorizontal: 15,
+  bottomInner: {
+    padding: 15,
   },
 
-  calendar: {
-    height: 80,
-    flexDirection: "row",
-  },
-
-  dayBox: {
-    width: `${100 / 7}%`,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
-  day: {
-    paddingVertical: 6,
-    paddingHorizontal: 8,
-    borderRadius: 20,
-    alignItems: "center",
-    backgroundColor: "transparent",
-  },
-
-  weekText: {
-    fontSize: 14,
-  },
-
-  dateText: {
-    marginTop: 6,
-    padding: 6,
-    borderRadius: 50,
-  },
-
-  todayDay: {
-    backgroundColor: color.main,
-  },
-
-  todayDate: {
-    backgroundColor: "#fff",
-  },
-
-  saturday: {
-    color: color.blue,
-  },
-
-  sunday: {
-    color: color.red,
+  cancelBtn: {
+    backgroundColor: COLORS.white,
+    borderColor: COLORS.brandPrimary,
   },
 });
