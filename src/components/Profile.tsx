@@ -3,7 +3,7 @@ import { Image, StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
 
 /* Styles */
-import { color } from "../common/colors";
+import { COLORS } from "../common/colors";
 
 type ProfileImageKey = keyof typeof profileImages;
 
@@ -34,11 +34,11 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderWidth: 1,
-    borderColor: color.sub3,
+    borderColor: COLORS.surfaceWarm,
     borderRadius: 50 / 2,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: color.white,
+    backgroundColor: COLORS.white,
   },
 
   ProfileImage: {

@@ -12,9 +12,9 @@ import Header from "../components/Header";
 import Profile from "../components/Profile";
 import MenuButton from "../components/MenuButton";
 import InviteModal from "../components/Modal/InviteModal";
-import { color } from "../common/colors";
-import { P20 } from "../components/Typography";
+import { COLORS } from "../common/colors";
 import { RootStackParamList } from "../../App";
+import { T20 } from "../components/Typography";
 
 type Navigation = NativeStackNavigationProp<RootStackParamList>;
 
@@ -33,7 +33,7 @@ export default function Home() {
         <View style={styles.profileContainer}>
           <View style={styles.profileLineBox}>
             <Profile image={"one"} />
-            <P20 style={{ marginLeft: 10 }}>정인성 ♧</P20>
+            <T20 style={{ marginLeft: 10 }}>정인성 ♧</T20>
           </View>
           <View>
             <Profile image={"invite"} onPress={() => setIsModal(true)} />
@@ -56,11 +56,11 @@ export default function Home() {
 }
 
 const styles = StyleSheet.create({
-  safeContainer: { flex: 1, backgroundColor: color.sub2 },
+  safeContainer: { flex: 1, backgroundColor: COLORS.surfaceSoft },
 
   headerContainer: {
     height: 156,
-    backgroundColor: color.sub2,
+    backgroundColor: COLORS.surfaceSoft,
   },
 
   profileContainer: {
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
 
   homeContainer: {
     flex: 1,
-    backgroundColor: color.back,
+    backgroundColor: COLORS.background,
     borderTopLeftRadius: 50,
     borderTopRightRadius: 50,
   },

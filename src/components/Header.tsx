@@ -26,7 +26,7 @@ export default function Header({ isBack = false }: HeaderType) {
 
       <Image
         source={require("../../assets/Logo.png")}
-        style={{ width: 150, height: 52 }}
+        style={{ width: 90, height: 50 }}
       />
     </View>
   );

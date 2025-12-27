@@ -1,14 +1,21 @@
-export const color = {
-  main: "#ffd653",
-  main2: "#ff8f00",
-  sub: "#FFB69C",
-  sub2: "#FFFAC8",
-  sub3: "#FFD3AA",
-  black: "#231F20",
-  back: "#FFFBF0",
-  blue: "#006AD5",
-  red: "#FE574B",
-  gray: "#929292",
-  gray2: "#aaaaaa",
-  white: "#f9f9f9",
+export const COLORS = {
+  // 브랜드색상
+  brandPrimary: "#FFD653",
+  brandAccent: "#FF8F00",
+
+  // 서브색상
+  background: "#FFFBF0",
+  surfaceSoft: "#FFFAC8",
+  surfaceWarm: "#FFD3AA",
+
+  // 글자 색상
+  textPrimary: "#231F20",
+  textSecondary: "#929292",
+
+  // 흰색 색상
+  white: "#F9FAFB",
+
+  // 성공 실패 색상
+  success: "#006AD5",
+  fail: "#FE574B",
 };

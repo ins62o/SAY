@@ -9,7 +9,7 @@ import Chat from "../screen/Chat";
 import Options from "../screen/Options";
 
 /* Styles */
-import { color } from "../common/colors";
+import { COLORS } from "../common/colors";
 
 const iconMap = {
   Home: "home",
@@ -32,12 +32,9 @@ export default function BottomTabNavigator() {
               color={color}
             />
           ),
-          tabBarActiveTintColor: color.main,
-          tabBarInactiveTintColor: color.gray2,
+          tabBarActiveTintColor: COLORS.brandPrimary,
+          tabBarInactiveTintColor: COLORS.textSecondary,
           headerShown: false,
-          tabBarLabelStyle: {
-            fontFamily: "Pretendard",
-          },
         })}
       >
         <BottomTab.Screen

@@ -4,7 +4,7 @@ import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 
 /* Styles */
 import { CommonStyles } from "../common/container";
-import { color } from "../common/colors";
+import { COLORS } from "../common/colors";
 import { T16 } from "./Typography";
 
 const iconMap = {
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   tabButton: {
     width: "30%",
     height: 50,
-    backgroundColor: color.main,
+    backgroundColor: COLORS.brandPrimary,
     alignItems: "center",
     flexDirection: "row",
     borderRadius: 10,

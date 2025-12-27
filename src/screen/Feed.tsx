@@ -1,5 +1,5 @@
 /* React & React Native */
-import { View, StyleSheet, Animated } from "react-native";
+import { View, StyleSheet, Animated, TouchableOpacity } from "react-native";
 import React, { useRef, useState } from "react";
 
 /* Library */
@@ -8,7 +8,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 /* Components */
 import Header from "../components/Header";
-import { color } from "../common/colors";
+import { COLORS } from "../common/colors";
 import { T18 } from "../components/Typography";
 
 export default function Feed() {
@@ -53,7 +53,7 @@ export default function Feed() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: color.back,
+    backgroundColor: COLORS.background,
   },
 
   feedContainer: {
@@ -64,7 +64,5 @@ const styles = StyleSheet.create({
 
   cardContainer: {
     flex: 1,
-    width: "100%",
-    margin: 15,
   },
 });

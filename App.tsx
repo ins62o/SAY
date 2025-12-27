@@ -18,8 +18,6 @@ export type RootStackParamList = {
 
 export default function App() {
   const [fontsLoaded] = useFonts({
-    Pretendard: require("./assets/fonts/Pretendard-Medium.ttf"),
-    PretendardBold: require("./assets/fonts/Pretendard-Bold.ttf"),
     memo: require("./assets/fonts/Memoment.ttf"),
   });
 

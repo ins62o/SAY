@@ -3,19 +3,19 @@ import React from "react";
 import { Modal, StyleSheet, View, Pressable } from "react-native";
 
 /* Styles */
-import { color } from "../../common/colors";
-import { T16, T20 } from "../Typography";
+import { COLORS } from "../../common/colors";
+import { T16, T20, T22 } from "../Typography";
 
 /* Components */
 import Profile from "../Profile";
 import Button from "../Button";
 
-type EnvelopeModalProps = {
+type InviteType = {
   visible: boolean;
   onClose: () => void;
 };
 
-export default function InviteModal({ visible, onClose }: EnvelopeModalProps) {
+export default function InviteModal({ visible, onClose }: InviteType) {
   return (
     <Modal
       transparent
@@ -29,7 +29,7 @@ export default function InviteModal({ visible, onClose }: EnvelopeModalProps) {
         <View style={styles.envelopeWrapper}>
           <View style={styles.innerWrapper}>
             <View style={styles.inviteTitle}>
-              <T20>초대장</T20>
+              <T22>초대장</T22>
             </View>
             <View style={styles.inviteContainer}>
               <Profile image={"one"} />
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     height: 250,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: color.sub,
+    backgroundColor: COLORS.surfaceWarm,
     borderRadius: 10,
   },
 
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     height: 220,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: color.sub2,
+    backgroundColor: COLORS.surfaceSoft,
     borderRadius: 10,
   },
 
