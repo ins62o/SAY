@@ -1,13 +1,18 @@
-/* React & React Native  */
+/* React & React Native */
 import React from "react";
-import { View, TouchableOpacity, Image, StyleSheet } from "react-native";
-import { T18 } from "./Typography";
+import { TouchableOpacity, Image, StyleSheet } from "react-native";
 
+/* Components */
+import { T18 } from "./Typography";
+import { COLORS } from "../common/colors";
+
+/* Types */
 type TodoType = {
   todo: string;
   isCheck: boolean;
 };
 
+/* Assets */
 const IconState = {
   oncheck: require("../../assets/characters/on-check.png"),
   offcheck: require("../../assets/characters/off-check.png"),
@@ -16,32 +21,37 @@ const IconState = {
 export default function TodoList({ todo, isCheck }: TodoType) {
   return (
     <TouchableOpacity style={styles.container}>
-      <View style={styles.iconBox}>
-        <Image
-          source={IconState[isCheck ? "oncheck" : "offcheck"]}
-          style={styles.icon}
-        />
-      </View>
-      <T18>{todo}</T18>
+      <Image
+        source={isCheck ? IconState.oncheck : IconState.offcheck}
+        style={styles.icon}
+      />
+
+      <T18 style={[styles.text, isCheck && styles.checkedText]}>{todo}</T18>
     </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
+  /* ===== Layout ===== */
   container: {
-    flex: 1,
-    height: 48,
+    marginBottom: 20,
     flexDirection: "row",
     alignItems: "center",
   },
 
-  iconBox: {
-    justifyContent: "center",
-    marginRight: 5,
+  /* ===== Icon ===== */
+  icon: {
+    width: 25,
+    height: 25,
+    marginRight: 8,
   },
 
-  icon: {
-    height: 35,
-    width: 35,
+  /* ===== Text ===== */
+  text: {
+    flex: 1,
+  },
+
+  checkedText: {
+    color: COLORS.brandAccent,
   },
 });
