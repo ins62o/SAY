@@ -11,6 +11,7 @@ export const COLORS = {
   // 글자 색상
   textPrimary: "#231F20",
   textSecondary: "#929292",
+  textThird: "#D1D5DB",
 
   // 흰색 색상
   white: "#F9FAFB",
