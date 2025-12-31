@@ -6,6 +6,9 @@ import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
+/* Image */
+import Logo from "../../assets/etc/Logo.png";
+
 type HeaderType = {
   isBack: boolean;
 };
@@ -24,10 +27,7 @@ export default function Header({ isBack = false }: HeaderType) {
         </TouchableOpacity>
       )}
 
-      <Image
-        source={require("../../assets/Logo.png")}
-        style={{ width: 90, height: 50 }}
-      />
+      <Image source={Logo} style={{ width: 90, height: 50 }} />
     </View>
   );
 }

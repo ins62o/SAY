@@ -6,25 +6,20 @@ import { TouchableOpacity, Image, StyleSheet } from "react-native";
 import { T18 } from "./Typography";
 import { COLORS } from "../common/colors";
 
+/* Image */
+import onCheck from "../../assets/icons/on-check.png";
+import offCheck from "../../assets/icons/off-check.png";
+
 /* Types */
 type TodoType = {
   todo: string;
   isCheck: boolean;
 };
 
-/* Assets */
-const IconState = {
-  oncheck: require("../../assets/characters/on-check.png"),
-  offcheck: require("../../assets/characters/off-check.png"),
-};
-
 export default function TodoList({ todo, isCheck }: TodoType) {
   return (
     <TouchableOpacity style={styles.container}>
-      <Image
-        source={isCheck ? IconState.oncheck : IconState.offcheck}
-        style={styles.icon}
-      />
+      <Image source={isCheck ? onCheck : offCheck} style={styles.icon} />
 
       <T18 style={[styles.text, isCheck && styles.checkedText]}>{todo}</T18>
     </TouchableOpacity>

@@ -16,6 +16,9 @@ import Button from "../Button";
 import { COLORS } from "../../common/colors";
 import { T18, T20 } from "../Typography";
 
+/* Image */
+import onCheck from "../../../assets/icons/on-check.png";
+
 type InviteType = {
   visible: boolean;
   onClose: () => void;
@@ -42,10 +45,7 @@ export default function ChoiceCharacterModal({ visible, onClose }: InviteType) {
                   <T18 style={styles.name}>정인성</T18>
                 </View>
 
-                <Image
-                  source={require("../../../assets/characters/on-check.png")}
-                  style={styles.check}
-                />
+                <Image source={onCheck} style={styles.check} />
               </TouchableOpacity>
             ))}
           </ScrollView>

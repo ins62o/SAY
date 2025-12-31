@@ -5,6 +5,13 @@ import React from "react";
 /* Styles */
 import { COLORS } from "../common/colors";
 
+/* Image */
+import invite from "../../assets/icons/invite.png";
+import one from "../../assets/characters/one.png";
+import two from "../../assets/characters/two.png";
+import three from "../../assets/characters/three.png";
+import plus from "../../assets/icons/plus.png";
+
 type ProfileImageKey = keyof typeof profileImages;
 
 type ProfileType = {
@@ -13,12 +20,11 @@ type ProfileType = {
 };
 
 const profileImages = {
-  icon: require("../../assets/icon.png"),
-  invite: require("../../assets/icons/invite.png"),
-  one: require("../../assets/characters/one.png"),
-  two: require("../../assets/characters/two.png"),
-  three: require("../../assets/characters/three.png"),
-  plus: require("../../assets/characters/plus.png"),
+  invite,
+  one,
+  two,
+  three,
+  plus,
 };
 
 export default function Profile({ image, onPress }: ProfileType) {
