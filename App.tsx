@@ -7,13 +7,17 @@ import { useFonts } from "expo-font";
 /* Screen */
 import Calendar from "./src/screen/Calendar";
 import Feed from "./src/screen/Feed";
+import FeedWrite from "./src/screen/FeedWrite";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export type RootStackParamList = {
   MainTab: undefined;
-  Feed: undefined;
   Calendar: undefined;
+
+  // 피드
+  Feed: undefined;
+  FeedWrite: undefined;
 };
 
 export default function App() {
@@ -30,6 +34,7 @@ export default function App() {
         <Stack.Screen name="MainTab" component={BottomTabNavigator} />
         <Stack.Screen name="Calendar" component={Calendar} />
         <Stack.Screen name="Feed" component={Feed} />
+        <Stack.Screen name="FeedWrite" component={FeedWrite} />
       </Stack.Navigator>
     </NavigationContainer>
   );
