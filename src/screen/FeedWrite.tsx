@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
   /** 🔥 하단 버튼 */
   bottomButton: {
     padding: 15,
-    paddingBottom: 40,
+    paddingBottom: 30,
     backgroundColor: COLORS.background,
   },
 
