@@ -2,8 +2,6 @@
 import {
   View,
   StyleSheet,
-  Modal,
-  Pressable,
   TouchableOpacity,
   Image,
   ScrollView,
@@ -15,6 +13,7 @@ import Profile from "../Profile";
 import Button from "../Button";
 import { COLORS } from "../../common/colors";
 import { T18, T20 } from "../Typography";
+import BaseModal from "../Modal/BaseModal";
 
 /* Image */
 import onCheck from "../../../assets/icons/on-check.png";
@@ -26,72 +25,57 @@ type InviteType = {
 
 export default function ChoiceCharacterModal({ visible, onClose }: InviteType) {
   return (
-    <Modal transparent visible={visible} animationType="fade">
-      <View style={styles.overlay}>
-        <Pressable style={styles.backdrop} onPress={onClose} />
+    <BaseModal
+      visible={visible}
+      onClose={onClose}
+      width={320}
+      height={420}
+      innerPadding={0}
+    >
+      <View style={styles.modal}>
+        {/* ===== Header ===== */}
+        <View style={styles.header}>
+          <T20>구성원 목록</T20>
+        </View>
 
-        <View style={styles.modal}>
-          {/* Header */}
-          <View style={styles.header}>
-            <T20>구성원 목록</T20>
-          </View>
+        {/* ===== List ===== */}
+        <ScrollView style={styles.list} showsVerticalScrollIndicator={false}>
+          {Array.from({ length: 7 }).map((_, index) => (
+            <TouchableOpacity key={index} style={styles.item}>
+              <View style={styles.profile}>
+                <Profile image="one" />
+                <T18 style={styles.name}>정인성</T18>
+              </View>
 
-          {/* List */}
-          <ScrollView style={styles.list} showsVerticalScrollIndicator={false}>
-            {Array.from({ length: 7 }).map((_, index) => (
-              <TouchableOpacity key={index} style={styles.item}>
-                <View style={styles.profile}>
-                  <Profile image="one" />
-                  <T18 style={styles.name}>정인성</T18>
-                </View>
+              <Image source={onCheck} style={styles.check} />
+            </TouchableOpacity>
+          ))}
+        </ScrollView>
 
-                <Image source={onCheck} style={styles.check} />
-              </TouchableOpacity>
-            ))}
-          </ScrollView>
-
-          {/* Footer */}
-          <View style={styles.footer}>
-            <Button text="확인" size={18} />
-          </View>
+        {/* ===== Footer ===== */}
+        <View style={styles.footer}>
+          <Button text="확인" size={18} />
         </View>
       </View>
-    </Modal>
+    </BaseModal>
   );
 }
 
 const styles = StyleSheet.create({
-  /* Overlay */
-  overlay: {
-    flex: 1,
-    backgroundColor: "rgba(0,0,0,0.4)",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
-  backdrop: {
-    ...StyleSheet.absoluteFillObject,
-  },
-
-  /* Modal */
   modal: {
-    width: "80%",
-    maxHeight: 420,
+    flex: 1,
+    width: "100%",
     backgroundColor: COLORS.surfaceSoft,
-    borderRadius: 16,
-    overflow: "hidden",
+    borderRadius: 15,
   },
 
-  /* Header */
   header: {
     paddingVertical: 14,
     alignItems: "center",
-    backgroundColor: COLORS.surfaceSoft,
     borderBottomWidth: 2,
     borderColor: COLORS.background,
   },
 
-  /* List */
   list: {
     flexGrow: 0,
   },
@@ -120,6 +104,6 @@ const styles = StyleSheet.create({
 
   footer: {
     padding: 14,
-    backgroundColor: COLORS.background,
+    backgroundColor: COLORS.surfaceSoft,
   },
 });

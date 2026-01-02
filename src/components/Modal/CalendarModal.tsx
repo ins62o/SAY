@@ -1,18 +1,13 @@
 /* React & React Native */
 import React, { useEffect, useMemo, useState } from "react";
-import {
-  Modal,
-  Pressable,
-  StyleSheet,
-  View,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet, View, TouchableOpacity } from "react-native";
 
 /* Components */
 import { Ionicons } from "@expo/vector-icons";
 import { COLORS } from "../../common/colors";
 import { T18 } from "../Typography";
 import Button from "../Button";
+import BaseModal from "../Modal/BaseModal";
 
 /* Library */
 import dayjs, { Dayjs } from "dayjs";
@@ -34,13 +29,13 @@ export default function CalendarModal({
 }: CalendarType) {
   const today = dayjs();
 
-  const [currentMonth, setCurrentMonth] = useState<Dayjs>(
+  const [currentMonth, setCurrentMonth] = useState(
     selectedDate.startOf("month")
   );
   const [localSelectedDate, setLocalSelectedDate] =
     useState<Dayjs>(selectedDate);
 
-  /* 🔥 핵심: 부모 상태와 동기화 */
+  /* 부모 상태 동기화 */
   useEffect(() => {
     if (!visible) return;
 
@@ -69,116 +64,112 @@ export default function CalendarModal({
     onClose();
   };
 
+  const modalHeight = useMemo(() => {
+    const weekCount = Math.ceil(calendarDays.length / 7);
+
+    switch (weekCount) {
+      case 4:
+        return 370;
+      case 5:
+        return 410;
+      case 6:
+        return 450;
+      default:
+        return 410;
+    }
+  }, [calendarDays]);
+
   return (
-    <Modal transparent visible={visible} animationType="fade">
-      <View style={styles.overlay}>
-        <Pressable style={styles.backdrop} onPress={onClose} />
+    <BaseModal
+      visible={visible}
+      onClose={onClose}
+      width={360}
+      height={modalHeight}
+      innerPadding={0}
+    >
+      <View style={styles.calendarBox}>
+        {/* ===== Header ===== */}
+        <View style={styles.header}>
+          <TouchableOpacity
+            onPress={() => setCurrentMonth((prev) => prev.subtract(1, "month"))}
+          >
+            <Ionicons name="chevron-back" size={24} />
+          </TouchableOpacity>
 
-        <View style={styles.calendarBox}>
-          {/* ===== Header ===== */}
-          <View style={styles.header}>
-            <TouchableOpacity
-              onPress={() =>
-                setCurrentMonth((prev) => prev.subtract(1, "month"))
-              }
+          <T18>{currentMonth.format("YYYY년 MM월")}</T18>
+
+          <TouchableOpacity
+            onPress={() => setCurrentMonth((prev) => prev.add(1, "month"))}
+          >
+            <Ionicons name="chevron-forward" size={24} />
+          </TouchableOpacity>
+        </View>
+
+        {/* ===== Week ===== */}
+        <View style={styles.weekRow}>
+          {WEEK_LABELS.map((day, idx) => (
+            <T18
+              key={day}
+              style={[
+                styles.weekText,
+                idx === 0 && styles.sunday,
+                idx === 6 && styles.saturday,
+              ]}
             >
-              <Ionicons name="chevron-back" size={24} />
-            </TouchableOpacity>
+              {day}
+            </T18>
+          ))}
+        </View>
 
-            <T18>{currentMonth.format("YYYY년 MM월")}</T18>
+        {/* ===== Days ===== */}
+        <View style={styles.daysGrid}>
+          {calendarDays.map((day) => {
+            const isCurrentMonth = day.month() === currentMonth.month();
+            const isToday = day.isSame(today, "day");
+            const isSelected = day.isSame(localSelectedDate, "day");
 
-            <TouchableOpacity
-              onPress={() => setCurrentMonth((prev) => prev.add(1, "month"))}
-            >
-              <Ionicons name="chevron-forward" size={24} />
-            </TouchableOpacity>
-          </View>
-
-          {/* ===== Week ===== */}
-          <View style={styles.weekRow}>
-            {WEEK_LABELS.map((day, idx) => (
-              <T18
-                key={day}
+            return (
+              <TouchableOpacity
+                key={day.format("YYYY-MM-DD")}
                 style={[
-                  styles.weekText,
-                  idx === 0 && styles.sunday,
-                  idx === 6 && styles.saturday,
+                  styles.dayCell,
+                  isSelected && styles.selectedCell,
+                  isToday && !isSelected && styles.todayCell,
                 ]}
+                disabled={!isCurrentMonth}
+                onPress={() => setLocalSelectedDate(day)}
               >
-                {day}
-              </T18>
-            ))}
-          </View>
-
-          {/* ===== Calendar ===== */}
-          <View style={styles.daysGrid}>
-            {calendarDays.map((day) => {
-              const isCurrentMonth = day.month() === currentMonth.month();
-              const isToday = day.isSame(today, "day");
-              const isSelected = day.isSame(localSelectedDate, "day");
-
-              return (
-                <TouchableOpacity
-                  key={day.format("YYYY-MM-DD")}
+                <T18
                   style={[
-                    styles.dayCell,
-                    isSelected && styles.selectedCell,
-                    isToday && !isSelected && styles.todayCell,
+                    styles.dayText,
+                    !isCurrentMonth && styles.outsideMonth,
+                    isSelected && styles.selectedText,
                   ]}
-                  disabled={!isCurrentMonth}
-                  onPress={() => setLocalSelectedDate(day)}
                 >
-                  <T18
-                    style={[
-                      styles.dayText,
-                      !isCurrentMonth && styles.outsideMonth,
-                      isSelected && styles.selectedText,
-                    ]}
-                  >
-                    {day.date()}
-                  </T18>
-                </TouchableOpacity>
-              );
-            })}
-          </View>
+                  {day.date()}
+                </T18>
+              </TouchableOpacity>
+            );
+          })}
+        </View>
 
-          {/* ===== Footer ===== */}
-          <View style={styles.footer}>
-            <Button
-              text="확인"
-              size={18}
-              style={styles.button}
-              onPress={handleConfirm}
-            />
-          </View>
+        {/* ===== Footer ===== */}
+        <View style={styles.footer}>
+          <Button text="확인" size={18} onPress={handleConfirm} />
         </View>
       </View>
-    </Modal>
+    </BaseModal>
   );
 }
 
-/* ================= Styles ================= */
-
 const styles = StyleSheet.create({
-  overlay: {
-    flex: 1,
-    backgroundColor: "rgba(0,0,0,0.4)",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
-  backdrop: {
-    ...StyleSheet.absoluteFillObject,
-  },
-
   calendarBox: {
-    width: "90%",
+    flex: 1,
+    width: "100%",
     backgroundColor: COLORS.background,
-    borderRadius: 12,
-    overflow: "hidden",
+    borderRadius: 15,
   },
 
-  /* Header */
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -205,7 +196,6 @@ const styles = StyleSheet.create({
     color: COLORS.success,
   },
 
-  /* Days */
   daysGrid: {
     flexDirection: "row",
     flexWrap: "wrap",
@@ -242,15 +232,10 @@ const styles = StyleSheet.create({
     color: COLORS.textPrimary,
   },
 
-  /* Footer */
   footer: {
     marginTop: "auto",
     padding: 16,
     borderTopWidth: 1,
     borderTopColor: COLORS.surfaceSoft,
-  },
-
-  button: {
-    width: "100%",
   },
 });
