@@ -1,14 +1,11 @@
-/* React & React Native */
 import React from "react";
-import { Modal, StyleSheet, View, Pressable } from "react-native";
-
-/* Styles */
-import { COLORS } from "../../common/colors";
-import { T16, T20, T22 } from "../Typography";
+import { View } from "react-native";
 
 /* Components */
+import BaseModal from "../Modal/BaseModal";
 import Profile from "../Profile";
 import Button from "../Button";
+import { T16, T22 } from "../Typography";
 
 type InviteType = {
   visible: boolean;
@@ -17,84 +14,32 @@ type InviteType = {
 
 export default function InviteModal({ visible, onClose }: InviteType) {
   return (
-    <Modal
-      transparent
-      visible={visible}
-      animationType="fade"
-      onRequestClose={onClose}
-    >
-      <View style={styles.overlay}>
-        <Pressable style={styles.backdrop} onPress={onClose} />
-
-        <View style={styles.envelopeWrapper}>
-          <View style={styles.innerWrapper}>
-            <View style={styles.inviteTitle}>
-              <T22>초대장</T22>
-            </View>
-            <View style={styles.inviteContainer}>
-              <Profile image={"one"} />
-              <Profile image={"two"} />
-              <Profile image={"three"} />
-              <Profile image={"plus"} />
-            </View>
-
-            <View style={{ marginBottom: 20 }}>
-              <T16>1명의 구성원을 더 초대할 수 있어요 !</T16>
-            </View>
-
-            <Button text="초대 링크 보내기" style={{ height: 42 }} size={16} />
-          </View>
+    <BaseModal visible={visible} onClose={onClose} width={300} height={250}>
+      <View style={{ width: "100%", alignItems: "center" }}>
+        <View style={{ height: 50, justifyContent: "center" }}>
+          <T22>초대장</T22>
         </View>
+
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            width: "100%",
+            marginBottom: 20,
+          }}
+        >
+          <Profile image="one" />
+          <Profile image="two" />
+          <Profile image="three" />
+          <Profile image="plus" />
+        </View>
+
+        <View style={{ marginBottom: 20 }}>
+          <T16>1명의 구성원을 더 초대할 수 있어요 !</T16>
+        </View>
+
+        <Button text="초대 링크 보내기" style={{ height: 42 }} size={16} />
       </View>
-    </Modal>
+    </BaseModal>
   );
 }
-
-const styles = StyleSheet.create({
-  overlay: {
-    flex: 1,
-    backgroundColor: "rgba(0,0,0,0.4)",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
-  backdrop: {
-    ...StyleSheet.absoluteFillObject,
-  },
-
-  envelopeWrapper: {
-    width: 300,
-    height: 250,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: COLORS.surfaceWarm,
-    borderRadius: 10,
-  },
-
-  innerWrapper: {
-    padding: 15,
-    width: 270,
-    height: 220,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: COLORS.surfaceSoft,
-    borderRadius: 10,
-  },
-
-  inviteContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    width: "100%",
-    marginBottom: 20,
-  },
-
-  inviteTitle: {
-    height: 50,
-    width: "100%",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
-  inviteBtn: {},
-});
