@@ -1,3 +1,5 @@
+/* React & React Native */
+import React from "react";
 import {
   View,
   StyleSheet,
@@ -5,11 +7,15 @@ import {
   TouchableOpacity,
   Pressable,
 } from "react-native";
-import React from "react";
 
+/* Assets */
 import Welcome from "../../assets/etc/welcome.png";
-import { T14, T16, T18 } from "../components/Typography";
+
+/* Components */
+import { T14, T16, T18 } from "../components/common/Typography";
 import { COLORS } from "../common/colors";
+
+/* Library */
 import { SafeAreaView } from "react-native-safe-area-context";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../App";

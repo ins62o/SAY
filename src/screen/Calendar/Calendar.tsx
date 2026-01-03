@@ -7,16 +7,16 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import dayjs, { Dayjs } from "dayjs";
 
 /* Components */
-import Header from "../components/Header";
-import Button from "../components/Button";
-import WeeklyCalendar from "../components/WeeklyCalendar";
-import Schedule from "../components/Schedule";
-import CalendarModal from "../components/Modal/CalendarModal";
-import ChoiceCharacterModal from "../components/Modal/ChoiceCharacterModal";
+import Header from "../../components/common/Header";
+import WeeklyCalendar from "../../components/calendar/WeeklyCalendar";
+import Schedule from "../../components/calendar/Schedule";
+import Button from "../../components/common/Button";
+import CalendarModal from "../../components/modal/CalendarModal";
+import CreateTodoModal from "../../components/modal/CreateTodoModal";
+import ChoiceCharacterModal from "../../components/modal/ChoiceCharacterModal";
 
 /* Styles */
-import { COLORS } from "../common/colors";
-import CreateTodoModal from "../components/Modal/CreateTodoModal";
+import { COLORS } from "../../common/colors";
 
 export default function Calendar() {
   const [selectedDate, setSelectedDate] = useState<Dayjs>(dayjs());

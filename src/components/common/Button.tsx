@@ -3,11 +3,11 @@ import React from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
 
 /* Components */
-import { T16, T18, T20 } from "./Typography";
+import { T16, T18, T20 } from "../common/Typography";
 
 /* Styles */
-import { COLORS } from "../common/colors";
-import { CommonStyles } from "../common/container";
+import { COLORS } from "../../common/colors";
+import { CommonStyles } from "../../common/container";
 
 type ButtonType = {
   text: string;

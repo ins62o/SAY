@@ -3,12 +3,12 @@ import { View, TouchableOpacity, StyleSheet, Image } from "react-native";
 import React from "react";
 
 /* Components */
-import { COLORS } from "../common/colors";
-import { CommonStyles } from "../common/container";
-import { T16, T18 } from "./Typography";
+import { COLORS } from "../../common/colors";
+import { CommonStyles } from "../../common/container";
+import { T16, T18 } from "../common/Typography";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { RootStackParamList } from "../../App";
 import { useNavigation } from "@react-navigation/native";
+import { RootStackParamList } from "../../../App";
 
 type Navigation = NativeStackNavigationProp<RootStackParamList>;
 
@@ -27,7 +27,7 @@ export default function FeedImageCard() {
         <View style={styles.profile}>
           <View style={styles.profileOutline}>
             <Image
-              source={require("../../assets/characters/one.png")}
+              source={require("../../../assets/characters/one.png")}
               style={styles.profileImage}
             />
           </View>

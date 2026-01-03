@@ -9,14 +9,14 @@ import {
 } from "react-native";
 
 /* Styles */
-import { COLORS } from "../common/colors";
+import { COLORS } from "../../common/colors";
 
 /* Images */
-import invite from "../../assets/icons/invite.png";
-import one from "../../assets/characters/one.png";
-import two from "../../assets/characters/two.png";
-import three from "../../assets/characters/three.png";
-import plus from "../../assets/icons/plus.png";
+import invite from "../../../assets/icons/invite.png";
+import one from "../../../assets/characters/one.png";
+import two from "../../../assets/characters/two.png";
+import three from "../../../assets/characters/three.png";
+import plus from "../../../assets/icons/plus.png";
 
 const profileImages = {
   invite,

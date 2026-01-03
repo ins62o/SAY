@@ -8,9 +8,9 @@ import { Dayjs } from "dayjs";
 import BaseModal from "./BaseModal";
 
 /* Styles */
-import FormStep from "../Steps/FormStep";
-import CalendarStep from "../Steps/CalendarStep";
-import CharacterStep from "../Steps/CharacterStep";
+import FormStep from "../steps/FormStep";
+import CalendarStep from "../steps/CalendarStep";
+import CharacterStep from "../steps/CharacterStep";
 
 type Props = {
   visible: boolean;

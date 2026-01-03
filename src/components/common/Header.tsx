@@ -7,7 +7,7 @@ import { useNavigation } from "@react-navigation/native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 /* Image */
-import Logo from "../../assets/etc/Logo.png";
+import Logo from "../../../assets/etc/Logo.png";
 
 type HeaderType = {
   isBack: boolean;

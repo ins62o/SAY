@@ -3,9 +3,9 @@ import { View, TouchableOpacity, StyleSheet, Image } from "react-native";
 import React from "react";
 
 /* Components */
-import { T16, T18 } from "./Typography";
-import { COLORS } from "../common/colors";
-import { CommonStyles } from "../common/container";
+import { T16, T18 } from "../common/Typography";
+import { COLORS } from "../../common/colors";
+import { CommonStyles } from "../../common/container";
 
 export default function FeedTextCard() {
   return (
@@ -17,7 +17,7 @@ export default function FeedTextCard() {
         <View style={styles.profileRow}>
           <View style={styles.profileOutline}>
             <Image
-              source={require("../../assets/characters/one.png")}
+              source={require("../../../assets/characters/one.png")}
               style={styles.profileImage}
             />
           </View>

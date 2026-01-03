@@ -8,13 +8,13 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 
 /* Components */
-import Header from "../components/Header";
-import Profile from "../components/Profile";
-import MenuButton from "../components/MenuButton";
-import InviteModal from "../components/Modal/InviteModal";
+import Header from "../components/common/Header";
+import Profile from "../components/common//Profile";
+import MenuButton from "../components/common//MenuButton";
+import InviteModal from "../components/modal/InviteModal";
 import { COLORS } from "../common/colors";
+import { T20 } from "../components/common/Typography";
 import { RootStackParamList } from "../../App";
-import { T20 } from "../components/Typography";
 
 type Navigation = NativeStackNavigationProp<RootStackParamList>;
 

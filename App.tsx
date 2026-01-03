@@ -8,10 +8,10 @@ import BottomTabNavigator from "./src/navigations/Tabs";
 
 /* Screens */
 import Login from "./src/screen/Login";
-import Calendar from "./src/screen/Calendar";
-import Feed from "./src/screen/Feed";
-import FeedWrite from "./src/screen/FeedWrite";
-import FeedDetail from "./src/screen/FeedDetail";
+import FeedDetail from "./src/screen/Feed/FeedDetail";
+import Calendar from "./src/screen/Calendar/Calendar";
+import Feed from "./src/screen/Feed/Feed";
+import FeedWrite from "./src/screen/Feed/FeedWrite";
 
 export type RootStackParamList = {
   Login: undefined;

@@ -3,12 +3,12 @@ import React from "react";
 import { TouchableOpacity, Image, StyleSheet } from "react-native";
 
 /* Components */
-import { T18 } from "./Typography";
-import { COLORS } from "../common/colors";
+import { T18 } from "../common/Typography";
+import { COLORS } from "../../common/colors";
 
 /* Image */
-import onCheck from "../../assets/icons/on-check.png";
-import offCheck from "../../assets/icons/off-check.png";
+import onCheck from "../../../assets/icons/on-check.png";
+import offCheck from "../../../assets/icons/off-check.png";
 
 /* Types */
 type TodoType = {

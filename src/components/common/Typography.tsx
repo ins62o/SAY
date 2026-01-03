@@ -3,7 +3,7 @@ import React, { ReactNode } from "react";
 import { StyleProp, StyleSheet, Text, TextStyle } from "react-native";
 
 /* Styles */
-import { COLORS } from "../common/colors";
+import { COLORS } from "../../common/colors";
 
 interface BaseTextProps {
   style?: StyleProp<TextStyle>;

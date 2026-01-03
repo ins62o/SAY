@@ -3,8 +3,8 @@ import { View, TouchableOpacity, Image, StyleSheet } from "react-native";
 import React from "react";
 
 /* Components */
-import { COLORS } from "../common/colors";
-import { T18, T20 } from "./Typography";
+import { COLORS } from "../../common/colors";
+import { T18, T20 } from "../common/Typography";
 
 /* Library */
 import dayjs, { Dayjs } from "dayjs";
@@ -49,7 +49,7 @@ export default function WeeklyCalendar({
 
         <TouchableOpacity onPress={onPressCalendar}>
           <Image
-            source={require("../../assets/icons/calendar.png")}
+            source={require("../../../assets/icons/calendar.png")}
             style={styles.calendarIcon}
           />
         </TouchableOpacity>

@@ -2,10 +2,10 @@ import React from "react";
 import { View } from "react-native";
 
 /* Components */
-import BaseModal from "../Modal/BaseModal";
-import Profile from "../Profile";
-import Button from "../Button";
-import { T16, T22 } from "../Typography";
+import BaseModal from "../modal/BaseModal";
+import Profile from "../common/Profile";
+import Button from "../common/Button";
+import { T16, T22 } from "../common/Typography";
 
 type InviteType = {
   visible: boolean;

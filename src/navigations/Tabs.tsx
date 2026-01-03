@@ -5,12 +5,11 @@ import { Ionicons } from "@expo/vector-icons";
 
 /* Components */
 import Home from "../screen/Home";
-import Chat from "../screen/Chat";
 import Options from "../screen/Options";
 
 /* Styles */
 import { COLORS } from "../common/colors";
-import Login from "../screen/Login";
+import Chat from "../screen/Chat/Chat";
 
 const iconMap = {
   Home: "home",

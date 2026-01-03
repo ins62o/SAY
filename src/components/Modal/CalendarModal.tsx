@@ -5,9 +5,9 @@ import { StyleSheet, View, TouchableOpacity } from "react-native";
 /* Components */
 import { Ionicons } from "@expo/vector-icons";
 import { COLORS } from "../../common/colors";
-import { T18 } from "../Typography";
-import Button from "../Button";
-import BaseModal from "../Modal/BaseModal";
+import { T18 } from "../common/Typography";
+import Button from "../common/Button";
+import BaseModal from "../modal/BaseModal";
 
 /* Library */
 import dayjs, { Dayjs } from "dayjs";

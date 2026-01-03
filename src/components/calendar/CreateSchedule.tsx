@@ -9,9 +9,9 @@ import {
 import React from "react";
 
 /* Components */
-import { COLORS } from "../common/colors";
-import { T18 } from "./Typography";
-import Profile from "./Profile";
+import { COLORS } from "../../common/colors";
+import { T18 } from "../common/Typography";
+import Profile from "../common/Profile";
 import { Dayjs } from "dayjs";
 
 type CreateScheduleType = {

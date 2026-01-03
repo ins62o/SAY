@@ -13,21 +13,22 @@ import {
 import TypeWriter from "react-native-typewriter";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-/* Components */
-import Header from "../components/Header";
-import { COLORS } from "../common/colors";
-import { T18 } from "../components/Typography";
-import FeedImageCard from "../components/FeedImageCard";
-import FeedTextCard from "../components/FeedTextCard";
-import Button from "../components/Button";
-
 /* Image */
-import FeedBackImage from "../../assets/etc/feedBackImage.png";
-import Plus from "../../assets/icons/plus2.png";
+import Plus from "../../../assets/icons/plus2.png";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import FeedBackImage from "../../../assets/etc/feedBackImage.png";
 
-import { RootStackParamList } from "../../App";
+/* Library */
 import { useNavigation } from "@react-navigation/native";
+import { RootStackParamList } from "../../../App";
+
+/* Components */
+import { T18 } from "../../components/common/Typography";
+import { COLORS } from "../../common/colors";
+import Header from "../../components/common/Header";
+import Button from "../../components/common/Button";
+import FeedImageCard from "../../components/feed/FeedImageCard";
+import FeedTextCard from "../../components/feed/FeedTextCard";
 
 type Navigation = NativeStackNavigationProp<RootStackParamList>;
 

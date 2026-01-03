@@ -8,8 +8,8 @@ import { Ionicons } from "@expo/vector-icons";
 
 /* Components */
 import { COLORS } from "../../common/colors";
-import { T18 } from "../Typography";
-import Button from "../Button";
+import { T18 } from "../common/Typography";
+import Button from "../common/Button";
 import dayjs from "dayjs";
 
 const WEEK = ["일", "월", "화", "수", "목", "금", "토"];

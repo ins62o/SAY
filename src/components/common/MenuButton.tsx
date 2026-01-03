@@ -3,14 +3,14 @@ import React from "react";
 import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 
 /* Styles */
-import { CommonStyles } from "../common/container";
-import { COLORS } from "../common/colors";
-import { T16 } from "./Typography";
+import { CommonStyles } from "../../common/container";
+import { COLORS } from "../../common/colors";
+import { T16 } from "../common/Typography";
 
 const iconMap = {
-  album: require("../../assets/icons/album.png"),
-  promise: require("../../assets/icons/promise.png"),
-  story: require("../../assets/icons/story.png"),
+  album: require("../../../assets/icons/album.png"),
+  promise: require("../../../assets/icons/promise.png"),
+  story: require("../../../assets/icons/story.png"),
 } as const;
 
 type MenuType = {

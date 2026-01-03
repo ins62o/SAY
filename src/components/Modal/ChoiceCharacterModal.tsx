@@ -9,11 +9,11 @@ import {
 import React from "react";
 
 /* Components */
-import Profile from "../Profile";
-import Button from "../Button";
+import Profile from "../common/Profile";
+import Button from "../common/Button";
 import { COLORS } from "../../common/colors";
-import { T18, T20 } from "../Typography";
-import BaseModal from "../Modal/BaseModal";
+import { T18, T20 } from "../common/Typography";
+import BaseModal from "../modal/BaseModal";
 
 /* Image */
 import onCheck from "../../../assets/icons/on-check.png";

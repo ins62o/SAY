@@ -9,9 +9,9 @@ import {
 
 /* Components */
 import { COLORS } from "../../common/colors";
-import { T18, T20 } from "../Typography";
-import Profile from "../Profile";
-import Button from "../Button";
+import { T18, T20 } from "../common/Typography";
+import Profile from "../common/Profile";
+import Button from "../common/Button";
 
 /* Assets */
 import onCheck from "../../../assets/icons/on-check.png";

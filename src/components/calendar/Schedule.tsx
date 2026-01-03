@@ -4,8 +4,8 @@ import React from "react";
 
 /* Components */
 import TodoList from "./TodoList";
-import { COLORS } from "../common/colors";
-import { T20 } from "./Typography";
+import { COLORS } from "../../common/colors";
+import { T20 } from "../common/Typography";
 
 /* Library */
 import { Ionicons } from "@expo/vector-icons";

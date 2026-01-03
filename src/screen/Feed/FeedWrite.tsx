@@ -1,5 +1,6 @@
+/* React & React Native */
+import React, { useState } from "react";
 import {
-  Image,
   Keyboard,
   KeyboardAvoidingView,
   Platform,
@@ -10,15 +11,18 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useState } from "react";
+
+/* Library */
 import { SafeAreaView } from "react-native-safe-area-context";
-import Header from "../components/Header";
-import { COLORS } from "../common/colors";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { RootStackParamList } from "../../App";
 import { useNavigation } from "@react-navigation/native";
-import { T14, T16, T18 } from "../components/Typography";
-import Button from "../components/Button";
+import { RootStackParamList } from "../../../App";
+
+/* Components */
+import Header from "../../components/common/Header";
+import Button from "../../components/common/Button";
+import { T14, T16, T18 } from "../../components/common/Typography";
+import { COLORS } from "../../common/colors";
 
 type Navigation = NativeStackNavigationProp<RootStackParamList>;
 
