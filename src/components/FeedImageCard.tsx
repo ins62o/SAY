@@ -6,10 +6,21 @@ import React from "react";
 import { COLORS } from "../common/colors";
 import { CommonStyles } from "../common/container";
 import { T16, T18 } from "./Typography";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../../App";
+import { useNavigation } from "@react-navigation/native";
+
+type Navigation = NativeStackNavigationProp<RootStackParamList>;
 
 export default function FeedImageCard() {
+  const navigation = useNavigation<Navigation>();
+
   return (
-    <TouchableOpacity activeOpacity={0.6} style={styles.imageCard}>
+    <TouchableOpacity
+      activeOpacity={0.6}
+      style={styles.imageCard}
+      onPress={() => navigation.navigate("FeedDetail")}
+    >
       <View style={styles.cardImageBox} />
 
       <View style={styles.cardHeader}>

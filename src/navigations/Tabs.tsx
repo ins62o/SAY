@@ -10,6 +10,7 @@ import Options from "../screen/Options";
 
 /* Styles */
 import { COLORS } from "../common/colors";
+import Login from "../screen/Login";
 
 const iconMap = {
   Home: "home",
