@@ -12,11 +12,13 @@ import FeedDetail from "./src/screen/Feed/FeedDetail";
 import Calendar from "./src/screen/Calendar/Calendar";
 import Feed from "./src/screen/Feed/Feed";
 import FeedWrite from "./src/screen/Feed/FeedWrite";
+import Gallery from "./src/screen/Gallery/Gallery";
 
 export type RootStackParamList = {
   Login: undefined;
   MainTab: undefined;
   Calendar: undefined;
+  Gallery: undefined;
 
   // 피드
   Feed: undefined;
@@ -50,6 +52,7 @@ export default function App() {
 
         <Stack.Screen name="FeedWrite" component={FeedWrite} />
         <Stack.Screen name="FeedDetail" component={FeedDetail} />
+        <Stack.Screen name="Gallery" component={Gallery} />
       </Stack.Navigator>
     </NavigationContainer>
   );
