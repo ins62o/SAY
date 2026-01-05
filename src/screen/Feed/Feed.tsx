@@ -107,7 +107,7 @@ export default function Feed() {
                   useNativeDriver: true,
                 }).start();
 
-                setTyping(1); // 이미지 뜬 후 타이핑 시작
+                setTyping(1);
               }}
             />
 

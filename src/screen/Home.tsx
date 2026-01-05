@@ -24,6 +24,7 @@ export default function Home() {
 
   const goToFeed = () => navigation.navigate("Feed");
   const goToCalendar = () => navigation.navigate("Calendar");
+  const goToGallery = () => navigation.navigate("Gallery");
 
   return (
     <SafeAreaView edges={["top"]} style={styles.safeContainer}>
@@ -45,7 +46,7 @@ export default function Home() {
         {/* 메뉴들 */}
         <View style={styles.tabContainer}>
           <MenuButton name="스토리" icon="story" onPress={goToFeed} />
-          <MenuButton name="사진첩" icon="album" onPress={goToFeed} />
+          <MenuButton name="사진첩" icon="album" onPress={goToGallery} />
           <MenuButton name="캘린더" icon="promise" onPress={goToCalendar} />
         </View>
       </View>

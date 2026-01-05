@@ -8,12 +8,15 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 
 /* Image */
 import Logo from "../../../assets/etc/Logo.png";
+import { T18 } from "./Typography";
+import { COLORS } from "../../common/colors";
 
 type HeaderType = {
   isBack: boolean;
+  isIcon?: boolean;
 };
 
-export default function Header({ isBack = false }: HeaderType) {
+export default function Header({ isBack = false, isIcon = false }: HeaderType) {
   const navigation = useNavigation();
   return (
     <View style={styles.HeaderContainer}>
