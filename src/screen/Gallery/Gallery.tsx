@@ -16,7 +16,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 
 /* Components */
-import { T22 } from "../../components/common/Typography";
+import { T16, T18, T20, T22 } from "../../components/common/Typography";
 import { COLORS } from "../../common/colors";
 import Header from "../../components/common/Header";
 import GridGallery from "../../components/gallery/GridGallery";
@@ -34,12 +34,27 @@ export default function Gallery() {
     <SafeAreaView style={styles.container} edges={["top"]}>
       <Header isBack />
 
-      <ScrollView
+      <View
+        style={{
+          justifyContent: "center",
+          alignItems: "center",
+          flex: 1,
+          paddingBottom: 100,
+        }}
+      >
+        <Image
+          source={require("../../../assets/etc/noAlbum.png")}
+          style={{ width: 300, height: 150 }}
+        />
+        <T18 style={{ marginTop: 10 }}>첫 추억을 기다리고 있어요</T18>
+      </View>
+
+      {/* <ScrollView
         contentContainerStyle={styles.galleryContainer}
         showsVerticalScrollIndicator={false}
-      >
-        {/* Title */}
-        <View style={styles.titleRow}>
+      > */}
+      {/* Title */}
+      {/* <View style={styles.titleRow}>
           <T22>사진첩</T22>
           <View style={styles.iconRow}>
             <Ionicons
@@ -56,16 +71,16 @@ export default function Gallery() {
               onPress={() => setViewMode("square")}
             />
           </View>
-        </View>
+        </View> */}
 
-        <View style={styles.spacing} />
+      {/* <View style={styles.spacing} /> */}
 
-        {/* 2줄 그리드 모드*/}
-        {viewMode === "grid" && <GridGallery />}
+      {/* 2줄 그리드 모드*/}
+      {/* {viewMode === "grid" && <GridGallery />} */}
 
-        {/* 1줄 모드 */}
-        {viewMode === "square" && <SquareGallery />}
-      </ScrollView>
+      {/* 1줄 모드 */}
+      {/* {viewMode === "square" && <SquareGallery />} */}
+      {/* </ScrollView> */}
 
       {/* 하단 더하기 버튼 */}
       <TouchableOpacity style={styles.plusBtn} onPress={openModal}>
