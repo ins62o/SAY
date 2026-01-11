@@ -37,7 +37,11 @@ const albums = [
   },
 ];
 
-export default function GridGallery() {
+type GalleryType = {
+  onPress: () => void;
+};
+
+export default function GridGallery({ onPress }: GalleryType) {
   return (
     <View style={styles.grid}>
       {albums.map((item) => (
@@ -45,6 +49,7 @@ export default function GridGallery() {
           key={item.id}
           style={styles.galleryItem}
           activeOpacity={0.6}
+          onPress={onPress}
         >
           <View>
             <View style={styles.itemHeader}>

@@ -13,6 +13,7 @@ import Calendar from "./src/screen/Calendar/Calendar";
 import Feed from "./src/screen/Feed/Feed";
 import FeedWrite from "./src/screen/Feed/FeedWrite";
 import Gallery from "./src/screen/Gallery/Gallery";
+import GalleryDetail from "./src/screen/Gallery/GalleryDetail";
 
 export type RootStackParamList = {
   Login: undefined;
@@ -24,6 +25,7 @@ export type RootStackParamList = {
   Feed: undefined;
   FeedWrite: undefined;
   FeedDetail: undefined;
+  GalleryDetail: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -53,6 +55,7 @@ export default function App() {
         <Stack.Screen name="FeedWrite" component={FeedWrite} />
         <Stack.Screen name="FeedDetail" component={FeedDetail} />
         <Stack.Screen name="Gallery" component={Gallery} />
+        <Stack.Screen name="GalleryDetail" component={GalleryDetail} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -10,10 +10,12 @@ export default function MenuIcon({
   label,
   icon,
   size,
+  onPress,
 }: {
   label: string;
   icon: any;
   size: "small" | "medium" | "large";
+  onPress?: () => void;
 }) {
   const iconStyle =
     size === "large"
@@ -24,7 +26,7 @@ export default function MenuIcon({
 
   return (
     <View style={styles.modalActionItem}>
-      <TouchableOpacity style={styles.modalIconCircle}>
+      <TouchableOpacity style={styles.modalIconCircle} onPress={onPress}>
         <Image source={icon} style={iconStyle} />
       </TouchableOpacity>
       <T16>{label}</T16>

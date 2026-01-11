@@ -16,45 +16,47 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 
 /* Components */
-import { T16, T18, T20, T22 } from "../../components/common/Typography";
+import { T22 } from "../../components/common/Typography";
 import { COLORS } from "../../common/colors";
 import Header from "../../components/common/Header";
 import GridGallery from "../../components/gallery/GridGallery";
 import SquareGallery from "../../components/gallery/SquareGallery";
-import MenuIcon from "../../components/gallery/CircleIcon";
-import BottomModal from "../../components/modal/BottomModal";
+import FolderModal from "../../components/modal/FolderModal";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../../../App";
+import GalleryBottomModal from "../../components/modal/GalleryBottomModal";
+
+type Navigation = NativeStackNavigationProp<RootStackParamList>;
 
 export default function Gallery() {
   const [viewMode, setViewMode] = useState<"grid" | "square">("grid");
   const [modalVisible, setModalVisible] = useState(false);
+  const [folderModal, setFolderModal] = useState(false);
   const openModal = () => setModalVisible(true);
   const closeModal = () => setModalVisible(false);
+  const { navigate } = useNavigation<Navigation>();
+
+  const goToAlbum = () => navigate("GalleryDetail");
+
+  const onFolder = () => {
+    setModalVisible(false);
+    setFolderModal(true);
+  };
 
   return (
     <SafeAreaView style={styles.container} edges={["top"]}>
       <Header isBack />
 
-      <View
-        style={{
-          justifyContent: "center",
-          alignItems: "center",
-          flex: 1,
-          paddingBottom: 100,
-        }}
-      >
-        <Image
-          source={require("../../../assets/etc/noAlbum.png")}
-          style={{ width: 300, height: 150 }}
-        />
-        <T18 style={{ marginTop: 10 }}>첫 추억을 기다리고 있어요</T18>
-      </View>
+      {/* 앨범이 없을 때 */}
+      {/* <NoneGallery/> */}
 
-      {/* <ScrollView
+      <ScrollView
         contentContainerStyle={styles.galleryContainer}
         showsVerticalScrollIndicator={false}
-      > */}
-      {/* Title */}
-      {/* <View style={styles.titleRow}>
+      >
+        {/* 사진첩 헤더 */}
+        <View style={styles.titleRow}>
           <T22>사진첩</T22>
           <View style={styles.iconRow}>
             <Ionicons
@@ -71,42 +73,35 @@ export default function Gallery() {
               onPress={() => setViewMode("square")}
             />
           </View>
-        </View> */}
+        </View>
 
-      {/* <View style={styles.spacing} /> */}
+        <View style={styles.spacing} />
 
-      {/* 2줄 그리드 모드*/}
-      {/* {viewMode === "grid" && <GridGallery />} */}
+        {/* 2줄 그리드 모드 */}
+        {viewMode === "grid" && <GridGallery onPress={goToAlbum} />}
 
-      {/* 1줄 모드 */}
-      {/* {viewMode === "square" && <SquareGallery />} */}
-      {/* </ScrollView> */}
+        {/* 1줄 모드 */}
+        {viewMode === "square" && <SquareGallery />}
+      </ScrollView>
 
       {/* 하단 더하기 버튼 */}
       <TouchableOpacity style={styles.plusBtn} onPress={openModal}>
         <Image source={Plus} style={styles.plusBtnSize} />
       </TouchableOpacity>
 
-      {/* Bottom Modal */}
-      <BottomModal visible={modalVisible} onClose={closeModal}>
-        <View style={styles.modalActionWrapper}>
-          <MenuIcon
-            label="갤러리"
-            icon={require("../../../assets/icons/gallery.png")}
-            size="medium"
-          />
-          <MenuIcon
-            label="카메라"
-            icon={require("../../../assets/icons/camera.png")}
-            size="large"
-          />
-          <MenuIcon
-            label="폴더"
-            icon={require("../../../assets/icons/file.png")}
-            size="medium"
-          />
-        </View>
-      </BottomModal>
+      {/* 하단 바텀 모달 */}
+      <GalleryBottomModal
+        modalVisible={modalVisible}
+        closeModal={closeModal}
+        onFolder={onFolder}
+      />
+
+      {/* 폴더 생성 모달 */}
+      <FolderModal
+        visible={folderModal}
+        onClose={() => setFolderModal(false)}
+        modalHeight={240}
+      />
     </SafeAreaView>
   );
 }
@@ -138,11 +133,4 @@ const styles = StyleSheet.create({
     elevation: 4,
   },
   plusBtnSize: { width: 38, height: 38 },
-
-  modalActionWrapper: {
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "center",
-  },
 });
