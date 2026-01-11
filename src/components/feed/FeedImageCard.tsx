@@ -13,13 +13,13 @@ import { RootStackParamList } from "../../../App";
 type Navigation = NativeStackNavigationProp<RootStackParamList>;
 
 export default function FeedImageCard() {
-  const navigation = useNavigation<Navigation>();
+  const { navigate } = useNavigation<Navigation>();
 
   return (
     <TouchableOpacity
       activeOpacity={0.6}
       style={styles.imageCard}
-      onPress={() => navigation.navigate("FeedDetail")}
+      onPress={() => navigate("FeedDetail")}
     >
       <View style={styles.cardImageBox} />
 
