@@ -1,9 +1,14 @@
-import { View, Text, StyleSheet, TextInput } from "react-native";
+/* === 폴더 모달 === */
+
+/* React & React Native */
+import { View, StyleSheet, TextInput } from "react-native";
 import React from "react";
+
+/* Components */
 import BaseModal from "./BaseModal";
-import { T16, T18, T20 } from "../common/Typography";
-import { COLORS } from "../../common/colors";
 import Button from "../common/Button";
+import { T18 } from "../common/Typography";
+import { COLORS } from "../../common/colors";
 
 type FolderType = {
   visible: boolean;

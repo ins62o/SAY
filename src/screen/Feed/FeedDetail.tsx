@@ -1,3 +1,5 @@
+/* === 스토리 상세 화면 === */
+
 /* React & React Native */
 import {
   View,

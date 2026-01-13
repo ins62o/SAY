@@ -1,3 +1,5 @@
+/* === 사진첩 화면 === */
+
 /* React & React Native */
 import React, { useState } from "react";
 import {

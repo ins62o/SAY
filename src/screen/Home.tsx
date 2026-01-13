@@ -1,3 +1,4 @@
+/* === 홈 화면 === */
 /* React & React Native */
 import React, { useState } from "react";
 import { View, StyleSheet } from "react-native";
@@ -19,8 +20,8 @@ import { RootStackParamList } from "../../App";
 type Navigation = NativeStackNavigationProp<RootStackParamList>;
 
 export default function Home() {
-  const [isModal, setIsModal] = useState(false);
   const navigation = useNavigation<Navigation>();
+  const [isModal, setIsModal] = useState(false);
 
   const goToFeed = () => navigation.navigate("Feed");
   const goToCalendar = () => navigation.navigate("Calendar");
@@ -29,12 +30,11 @@ export default function Home() {
   return (
     <SafeAreaView edges={["top"]} style={styles.safeContainer}>
       <View style={styles.headerContainer}>
-        {/* 헤더 */}
         <Header isBack={false} />
         <View style={styles.profileContainer}>
           <View style={styles.profileLineBox}>
             <Profile image={"one"} />
-            <T20 style={{ marginLeft: 10 }}>정인성 ♧</T20>
+            <T20 style={{ marginLeft: 10 }}>정인성</T20>
           </View>
           <View>
             <Profile image={"invite"} onPress={() => setIsModal(true)} />
@@ -58,6 +58,7 @@ export default function Home() {
 
 const styles = StyleSheet.create({
   safeContainer: { flex: 1, backgroundColor: COLORS.surfaceSoft },
+  profileLineBox: { alignItems: "center", flexDirection: "row" },
 
   headerContainer: {
     height: 156,
@@ -84,6 +85,4 @@ const styles = StyleSheet.create({
     bottom: 35,
     padding: 15,
   },
-
-  profileLineBox: { alignItems: "center", flexDirection: "row" },
 });

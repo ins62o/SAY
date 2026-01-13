@@ -1,3 +1,5 @@
+/* === 기본 모달 뼈대 === */
+
 /* React & React Native */
 import React, { ReactNode } from "react";
 import { Modal, StyleSheet, View, Pressable } from "react-native";

@@ -1,3 +1,5 @@
+/* === 캘린더 화면 === */
+
 /* React & React Native */
 import React, { useState } from "react";
 import { View, StyleSheet } from "react-native";

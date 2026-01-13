@@ -1,3 +1,5 @@
+/* === 참여 인원 설정 페이지 === */
+
 /* React & React Native */
 import {
   Image,

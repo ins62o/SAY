@@ -1,3 +1,5 @@
+/* === 페이지 경로 설정 === */
+
 /* Library */
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";

@@ -1,3 +1,5 @@
+/* === 사진첩 플러스 버튼 모달 (사진,카메라,폴더) === */
+
 /* React & React Native */
 import { View, StyleSheet } from "react-native";
 import React from "react";

@@ -1,3 +1,5 @@
+/* === 페이지 경로 설정  === */
+
 /* Library */
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StatusBar } from "expo-status-bar";

@@ -1,3 +1,5 @@
+/* === 캘린더 모달 화면 === */
+
 /* React & React Native */
 import React, { useEffect, useMemo, useState } from "react";
 import { StyleSheet, View, TouchableOpacity } from "react-native";

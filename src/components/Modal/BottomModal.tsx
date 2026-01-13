@@ -1,3 +1,5 @@
+/* === 바텀 모달 뼈대 === */
+
 /* React & React Native */
 import React, { useEffect, useRef } from "react";
 import {

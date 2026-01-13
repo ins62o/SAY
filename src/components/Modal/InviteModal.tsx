@@ -1,3 +1,6 @@
+/* === 초대장 모달 === */
+
+/* React & React Native */
 import React from "react";
 import { View } from "react-native";
 

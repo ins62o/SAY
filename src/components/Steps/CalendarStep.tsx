@@ -1,3 +1,5 @@
+/* === 캘린더 날짜 설정 페이지 === */
+
 /* React & React Native */
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { useMemo, useState, useEffect } from "react";
