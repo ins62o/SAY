@@ -16,6 +16,7 @@ import Feed from "./src/screen/Feed/Feed";
 import FeedWrite from "./src/screen/Feed/FeedWrite";
 import Gallery from "./src/screen/Gallery/Gallery";
 import GalleryDetail from "./src/screen/Gallery/GalleryDetail";
+import "./src/lib/firebase";
 
 export type RootStackParamList = {
   Login: undefined;

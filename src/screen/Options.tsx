@@ -2,20 +2,19 @@
 
 /* React & React Native */
 import React from "react";
-import { View, StyleSheet, TouchableOpacity } from "react-native";
+import { View, StyleSheet, TouchableOpacity, Image } from "react-native";
 import { COLORS } from "../common/colors";
-import { T14, T18, T20, T22 } from "../components/common/Typography";
+import { T14, T18, T24 } from "../components/common/Typography";
 import { CommonStyles } from "../common/container";
-import { Ionicons } from "@expo/vector-icons";
 
 /* Component */
 
 export default function Options() {
   const menuList = [
-    { label: "멤버십", icon: "accessibility" },
-    { label: "크루", icon: "people" },
-    { label: "공지사항", icon: "notifications" },
-    { label: "문의하기", icon: "chatbubble" },
+    { label: "프로필 수정", icon: require("../../assets/icons/profile.png") },
+    { label: "크루", icon: require("../../assets/icons/home.png") },
+    { label: "공지사항", icon: require("../../assets/icons/bell.png") },
+    { label: "문의하기", icon: require("../../assets/icons/chat.png") },
   ];
 
   return (
@@ -24,18 +23,20 @@ export default function Options() {
       <View style={styles.profileContainer}>
         <View style={styles.profileWrapper}>
           <View style={styles.infoSection}>
-            <T22>정인성</T22>
+            <T24>정인성</T24>
             <View style={styles.spacer} />
-            <T20>2026.01.10 남</T20>
+            <T14>가입일 : 2026.01.10 </T14>
             <View style={styles.spacer} />
-            <T20>크루 : 둥실뭉실</T20>
+            <T14>크루 : 둥실둥실</T14>
           </View>
 
           <View style={styles.imageSection}>
-            <View style={styles.avatar} />
-            <TouchableOpacity style={styles.editButton}>
-              <T14>편집</T14>
-            </TouchableOpacity>
+            <View style={styles.avatar}>
+              <Image
+                source={require("../../assets/characters/one.png")}
+                style={{ width: "100%", height: "100%" }}
+              />
+            </View>
           </View>
         </View>
       </View>
@@ -44,7 +45,7 @@ export default function Options() {
       <View style={styles.menuWrapper}>
         {menuList.map((item) => (
           <TouchableOpacity key={item.label} style={styles.menuCard}>
-            <Ionicons name={item.icon as any} size={24} />
+            <Image source={item.icon} style={{ width: 40, height: 40 }} />
             <T18 style={styles.menuLabel}>{item.label}</T18>
           </TouchableOpacity>
         ))}
@@ -92,7 +93,7 @@ const styles = StyleSheet.create({
 
   infoSection: {
     flex: 1,
-    alignItems: "center",
+    padding: 15,
   },
 
   imageSection: {
@@ -106,13 +107,6 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     backgroundColor: COLORS.background,
     marginBottom: 10,
-  },
-
-  editButton: {
-    backgroundColor: COLORS.textThird,
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 10,
   },
 
   spacer: {

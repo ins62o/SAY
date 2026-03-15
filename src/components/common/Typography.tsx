@@ -32,6 +32,10 @@ export const T22: React.FC<BaseTextProps> = (props) => (
   <Text {...props} style={[styles.t22, props.style]} />
 );
 
+export const T24: React.FC<BaseTextProps> = (props) => (
+  <Text {...props} style={[styles.t24, props.style]} />
+);
+
 const styles = StyleSheet.create({
   t14: {
     fontFamily: "memo",
@@ -60,6 +64,12 @@ const styles = StyleSheet.create({
   t22: {
     fontFamily: "memo",
     fontSize: 22,
+    color: COLORS.textPrimary,
+  },
+
+  t24: {
+    fontFamily: "memo",
+    fontSize: 24,
     color: COLORS.textPrimary,
   },
 });
