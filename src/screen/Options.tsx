@@ -1,68 +1,104 @@
-/* === 더보기 화면 === */
-
-/* React & React Native */
 import React from "react";
-import { View, StyleSheet, TouchableOpacity, Image } from "react-native";
-import { COLORS } from "../common/colors";
-import { T14, T18, T24 } from "../components/common/Typography";
-import { CommonStyles } from "../common/container";
+import { Alert, Image, StyleSheet, TouchableOpacity, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
-/* Component */
+import { COLORS } from "../common/colors";
+import { CommonStyles } from "../common/container";
+import { T14, T18, T24 } from "../components/common/Typography";
+import { RootStackParamList } from "../../App";
+
+type Navigation = NativeStackNavigationProp<RootStackParamList>;
 
 export default function Options() {
+  const navigation = useNavigation<Navigation>();
+
   const menuList = [
-    { label: "프로필 수정", icon: require("../../assets/icons/profile.png") },
-    { label: "크루", icon: require("../../assets/icons/home.png") },
+    { label: "프로필 설정", icon: require("../../assets/icons/profile.png") },
+    { label: "우리 집", icon: require("../../assets/icons/home.png") },
     { label: "공지사항", icon: require("../../assets/icons/bell.png") },
     { label: "문의하기", icon: require("../../assets/icons/chat.png") },
   ];
 
+  const goToLogin = () => navigation.replace("Login");
+
+  const handleLogout = () => {
+    Alert.alert("로그아웃하시겠습니까 ?", "", [
+      {
+        text: "취소",
+        style: "cancel",
+      },
+      {
+        text: "확인",
+        onPress: goToLogin,
+      },
+    ]);
+  };
+
+  const handleWithdraw = () => {
+    Alert.alert(
+      "서비스 이용을 그만하시겠습니까?",
+      "확인을 누르실 경우 모든 데이터가 삭제되며 복구가 불가능합니다.",
+      [
+        {
+          text: "취소",
+          style: "cancel",
+        },
+        {
+          text: "확인",
+          style: "destructive",
+          onPress: () => {},
+        },
+      ],
+    );
+  };
+
   return (
     <View style={styles.container}>
-      {/* 프로필 영역 */}
       <View style={styles.profileContainer}>
         <View style={styles.profileWrapper}>
           <View style={styles.infoSection}>
-            <T24>정인성</T24>
+            <T24>사용자</T24>
             <View style={styles.spacer} />
-            <T14>가입일 : 2026.01.10 </T14>
+            <T14>가입일 : 2026.01.10</T14>
             <View style={styles.spacer} />
-            <T14>크루 : 둥실둥실</T14>
+            <T14>크루 : SAY</T14>
           </View>
 
           <View style={styles.imageSection}>
             <View style={styles.avatar}>
               <Image
                 source={require("../../assets/characters/one.png")}
-                style={{ width: "100%", height: "100%" }}
+                style={styles.avatarImage}
               />
             </View>
           </View>
         </View>
       </View>
 
-      {/* 메뉴 카드 (2 x 2) */}
       <View style={styles.menuWrapper}>
         {menuList.map((item) => (
           <TouchableOpacity key={item.label} style={styles.menuCard}>
-            <Image source={item.icon} style={{ width: 40, height: 40 }} />
+            <Image source={item.icon} style={styles.menuIcon} />
             <T18 style={styles.menuLabel}>{item.label}</T18>
           </TouchableOpacity>
         ))}
       </View>
 
-      {/* 하단 영역 */}
       <View style={styles.bottomSection}>
         <TouchableOpacity style={styles.versionBox}>
           <T18>버전 1.0.0</T18>
         </TouchableOpacity>
 
         <View style={styles.actionRow}>
-          <TouchableOpacity style={styles.actionButton}>
+          <TouchableOpacity style={styles.actionButton} onPress={handleLogout}>
             <T18>로그아웃</T18>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.actionButton}>
-            <T18>탈퇴</T18>
+          <TouchableOpacity
+            style={styles.actionButton}
+            onPress={handleWithdraw}
+          >
+            <T18 style={styles.withdrawText}>탈퇴</T18>
           </TouchableOpacity>
         </View>
       </View>
@@ -76,7 +112,6 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.background,
   },
 
-  /** 프로필 */
   profileContainer: {
     backgroundColor: COLORS.surfaceSoft,
     paddingTop: 80,
@@ -109,11 +144,15 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
 
+  avatarImage: {
+    width: "100%",
+    height: "100%",
+  },
+
   spacer: {
     height: 8,
   },
 
-  /** 메뉴 카드 */
   menuWrapper: {
     flexDirection: "row",
     flexWrap: "wrap",
@@ -132,11 +171,15 @@ const styles = StyleSheet.create({
     ...CommonStyles.shadow,
   },
 
+  menuIcon: {
+    width: 40,
+    height: 40,
+  },
+
   menuLabel: {
     marginTop: 10,
   },
 
-  /** 하단 */
   bottomSection: {
     padding: 15,
   },
@@ -164,5 +207,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     ...CommonStyles.shadow,
+  },
+
+  withdrawText: {
+    color: COLORS.fail,
   },
 });

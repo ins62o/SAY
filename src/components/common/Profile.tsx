@@ -41,8 +41,8 @@ const getProfileOutlineStyle = (size: number): ViewStyle => ({
 });
 
 const getProfileImageStyle = (size: number): ImageStyle => ({
-  width: size - 2,
-  height: size - 2,
+  width: size - 10,
+  height: size - 10,
   borderRadius: (size - 2) / 2,
 });
 
@@ -68,6 +68,6 @@ const styles = StyleSheet.create({
     borderColor: COLORS.surfaceWarm,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: COLORS.white,
+    backgroundColor: "#fff",
   },
 });

@@ -20,6 +20,13 @@ type MenuType = {
 };
 
 export default function MenuButton({ name, icon, onPress }: MenuType) {
+  const iconStyle = [
+    styles.icon,
+    icon === "album" && styles.albumIcon,
+    icon === "story" && styles.storyIcon,
+    icon === "promise" && styles.promiseIcon,
+  ];
+
   return (
     <TouchableOpacity
       style={[styles.tabButton, CommonStyles.shadow]}
@@ -28,7 +35,8 @@ export default function MenuButton({ name, icon, onPress }: MenuType) {
       <View style={styles.iconBox}>
         <Image
           source={iconMap[icon as keyof typeof iconMap]}
-          style={styles.icon}
+          style={iconStyle}
+          resizeMode="contain"
         />
       </View>
       <T16 style={{ marginLeft: 10 }}>{name}</T16>
@@ -49,15 +57,31 @@ const styles = StyleSheet.create({
 
   iconBox: {
     backgroundColor: "#fff",
-    width: 40,
-    height: 40,
-    borderRadius: 40 / 2,
+    width: 42,
+    height: 42,
+    borderRadius: 21,
     justifyContent: "center",
     alignItems: "center",
+    overflow: "hidden",
   },
 
   icon: {
-    width: 50,
-    height: 50,
+    width: 26,
+    height: 26,
+  },
+
+  albumIcon: {
+    width: 22,
+    height: 22,
+  },
+
+  storyIcon: {
+    width: 28,
+    height: 28,
+  },
+
+  promiseIcon: {
+    width: 27,
+    height: 27,
   },
 });
