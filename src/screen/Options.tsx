@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
   menuCard: {
     width: "48%",
     height: 100,
-    backgroundColor: COLORS.white,
+    backgroundColor: "#fff",
     borderRadius: 15,
     justifyContent: "center",
     alignItems: "center",
