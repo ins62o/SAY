@@ -4,19 +4,17 @@ import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
 
 /* Library */
 import { useNavigation } from "@react-navigation/native";
-import Ionicons from "@expo/vector-icons/Ionicons";
 
 /* Image */
 import Logo from "../../../assets/etc/Logo.png";
-import { T18 } from "./Typography";
-import { COLORS } from "../../common/colors";
+import goBack from "../../../assets/icons/goBack.png";
 
 type HeaderType = {
   isBack: boolean;
-  isIcon?: boolean;
+  isText?: boolean;
 };
 
-export default function Header({ isBack = false, isIcon = false }: HeaderType) {
+export default function Header({ isBack = false, isText = false }: HeaderType) {
   const navigation = useNavigation();
   return (
     <View style={styles.HeaderContainer}>
@@ -26,11 +24,11 @@ export default function Header({ isBack = false, isIcon = false }: HeaderType) {
           onPress={() => navigation.goBack()}
           hitSlop={10}
         >
-          <Ionicons name="arrow-back" size={24} color="black" />
+          <Image source={goBack} style={{ width: 40, height: 100 }} />
         </TouchableOpacity>
       )}
 
-      <Image source={Logo} style={{ width: 90, height: 50 }} />
+      <Image source={Logo} style={{ width: 130, height: 50 }} />
     </View>
   );
 }

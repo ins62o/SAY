@@ -38,6 +38,7 @@ export default function Feed() {
   const [isEmpty, setIsEmpty] = useState(true);
   const [typing, setTyping] = useState<0 | 1 | -1>(0);
   const [typingDone, setTypingDone] = useState(false);
+  const [isGoBack, setIsGoBack] = useState(false);
 
   const navigation = useNavigation<Navigation>();
 
@@ -75,7 +76,7 @@ export default function Feed() {
 
   return (
     <SafeAreaView style={styles.container} edges={["top"]}>
-      <Header isBack />
+      <Header isBack={isGoBack} />
 
       <ScrollView
         contentContainerStyle={styles.scrollContent}
@@ -126,7 +127,10 @@ export default function Feed() {
               <Button
                 text="첫 게시글 쓰러가기"
                 size={18}
-                onPress={() => setIsEmpty(false)}
+                onPress={() => {
+                  setIsGoBack(true);
+                  setIsEmpty(false);
+                }}
               />
             </Animated.View>
           </View>

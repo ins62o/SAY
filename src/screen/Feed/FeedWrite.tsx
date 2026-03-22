@@ -97,7 +97,7 @@ export default function FeedWrite() {
 
         {/* 하단 고정 버튼 */}
         <View style={styles.bottomButton}>
-          <Button text="이야기 작성하기" size={18} />
+          <Button text="이야기 만들기" size={18} />
         </View>
       </SafeAreaView>
     </Pressable>

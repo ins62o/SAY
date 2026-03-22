@@ -10,20 +10,39 @@ import { RootStackParamList } from "../../App";
 
 type Navigation = NativeStackNavigationProp<RootStackParamList>;
 
+type MenuItem = {
+  label: string;
+  icon: number;
+  onPress?: () => void;
+};
+
 export default function Options() {
   const navigation = useNavigation<Navigation>();
 
-  const menuList = [
-    { label: "프로필 설정", icon: require("../../assets/icons/profile.png") },
-    { label: "우리 집", icon: require("../../assets/icons/home.png") },
-    { label: "공지사항", icon: require("../../assets/icons/bell.png") },
-    { label: "문의하기", icon: require("../../assets/icons/chat.png") },
+  const menuList: MenuItem[] = [
+    {
+      label: "프로필 설정",
+      icon: require("../../assets/icons/profile.png"),
+      onPress: () => navigation.navigate("ProfileSettings"),
+    },
+    {
+      label: "우리 집",
+      icon: require("../../assets/icons/home.png"),
+    },
+    {
+      label: "공지사항",
+      icon: require("../../assets/icons/bell.png"),
+    },
+    {
+      label: "문의하기",
+      icon: require("../../assets/icons/chat.png"),
+    },
   ];
 
   const goToLogin = () => navigation.replace("Login");
 
   const handleLogout = () => {
-    Alert.alert("로그아웃하시겠습니까 ?", "", [
+    Alert.alert("로그아웃하시겠습니까?", "", [
       {
         text: "취소",
         style: "cancel",
@@ -38,7 +57,7 @@ export default function Options() {
   const handleWithdraw = () => {
     Alert.alert(
       "서비스 이용을 그만하시겠습니까?",
-      "확인을 누르실 경우 모든 데이터가 삭제되며 복구가 불가능합니다.",
+      "확인을 누르면 모든 데이터가 삭제되며 복구가 불가능합니다.",
       [
         {
           text: "취소",
@@ -62,7 +81,7 @@ export default function Options() {
             <View style={styles.spacer} />
             <T14>가입일 : 2026.01.10</T14>
             <View style={styles.spacer} />
-            <T14>크루 : SAY</T14>
+            <T14>소속 : SAY</T14>
           </View>
 
           <View style={styles.imageSection}>
@@ -78,7 +97,11 @@ export default function Options() {
 
       <View style={styles.menuWrapper}>
         {menuList.map((item) => (
-          <TouchableOpacity key={item.label} style={styles.menuCard}>
+          <TouchableOpacity
+            key={item.label}
+            style={styles.menuCard}
+            onPress={item.onPress}
+          >
             <Image source={item.icon} style={styles.menuIcon} />
             <T18 style={styles.menuLabel}>{item.label}</T18>
           </TouchableOpacity>

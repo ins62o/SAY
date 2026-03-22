@@ -1,17 +1,11 @@
-/* === 페이지 경로 설정  === */
-
-/* Library */
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StatusBar } from "expo-status-bar";
 import { Ionicons } from "@expo/vector-icons";
 
-/* Components */
 import Home from "../screen/Home";
 import Options from "../screen/Options";
-
-/* Styles */
-import { COLORS } from "../common/colors";
 import Chat from "../screen/Chat/Chat";
+import { COLORS } from "../common/colors";
 
 const iconMap = {
   Home: "home",
@@ -42,19 +36,19 @@ export default function BottomTabNavigator() {
         <BottomTab.Screen
           name="Home"
           component={Home}
-          options={{ tabBarLabel: "홈" }}
+          options={{ tabBarLabel: "\uD648" }}
         />
 
         <BottomTab.Screen
           name="Chat"
           component={Chat}
-          options={{ tabBarLabel: "수다" }}
+          options={{ tabBarLabel: "\uC218\uB2E4" }}
         />
 
         <BottomTab.Screen
           name="Options"
           component={Options}
-          options={{ tabBarLabel: "더보기" }}
+          options={{ tabBarLabel: "\uB354\uBCF4\uAE30" }}
         />
       </BottomTab.Navigator>
     </>
